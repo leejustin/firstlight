@@ -1,0 +1,48 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "6C2A9F1E",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : true,
+      "internalID" : "6739200001",
+      "localizations" : [
+        {
+          "description" : "Every sunrise style, custom curves, all sounds and the wind-down sunset.",
+          "displayName" : "Firstlight Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.leejustin.firstlight.pro",
+      "referenceName" : "Firstlight Pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
