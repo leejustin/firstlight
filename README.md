@@ -25,7 +25,7 @@ Open `Firstlight.xcodeproj` and run the **Firstlight** scheme. The scheme uses `
 | `Firstlight/Settings` | Settings and the **Light check** diagnostic |
 | `FirstlightWidgets` | Widget extension: the "Next sunrise" widget and the backup alarm's Live Activity (snooze countdown) |
 | `Shared` | Types compiled into both the app and the widget extension |
-| `site` | firstlight.app: product page, privacy policy, support (static HTML for GitHub Pages) |
+| `site` | Product page, privacy policy and support page, published on GitHub Pages |
 | `tools/` | Generators for the bundled sounds and the app icon, and `screenshots.sh` for the App Store set |
 
 ## Hinge detection
@@ -60,7 +60,13 @@ Add `-screenshots YES` to show the alarm as on without touching AlarmKit, and to
 
 ## Website
 
-`site/` is firstlight.app: a product page, the privacy policy and the support page that App Store Connect asks for. It's plain HTML and CSS with a `CNAME` for firstlight.app. To publish on GitHub Pages, copy [docs/pages-workflow.yml](docs/pages-workflow.yml) to `.github/workflows/site.yml` (pushing a workflow needs a token with the `workflow` scope), set Pages to "GitHub Actions" in the repo settings, and run the **Publish site** workflow. It never runs on its own. Then point firstlight.app's DNS at GitHub Pages. Any static host works too.
+`site/` holds the product page, privacy policy and support page that App Store Connect asks for, published at https://leejustin.github.io/firstlight/ from the `gh-pages` branch. After changing `site/`, publish with:
+
+```bash
+git subtree push --prefix site origin gh-pages
+```
+
+To serve it from firstlight.app later, add a `CNAME` file containing the domain to `site/` and point the domain's DNS at GitHub Pages.
 
 ## The brightness question
 

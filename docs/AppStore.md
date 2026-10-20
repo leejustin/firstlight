@@ -51,6 +51,12 @@ Firstlight Pro, one purchase with no subscription:
 >
 > To see the whole sunrise quickly: Home › "Try a 60-second sunrise". Pro can be tested with the sandbox purchase on the Settings screen.
 
+## Links
+
+- **Support URL:** https://leejustin.github.io/firstlight/support.html
+- **Privacy Policy URL:** https://leejustin.github.io/firstlight/privacy.html
+- **Marketing URL:** https://leejustin.github.io/firstlight/
+
 ## Privacy (App Privacy questionnaire)
 
 - **Data collection:** none. Select "Data Not Collected".
@@ -87,7 +93,7 @@ Run it on a 6.9" simulator (an iPhone 18 Pro Max gives 1320 × 2868) and on the 
 - [ ] Build with Xcode 27.1 / iOS 27.1 SDK (avoids black borders on the Duo's inner screen)
 - [ ] Test in every posture in Device Hub, and on a regular iPhone
 - [ ] Set the development team, then register the app ID `app.firstlight`, the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight` and the HomeKit capability
-- [ ] Publish site/ (firstlight.app) and confirm support@firstlight.app receives mail; use its privacy and support pages for the App Store links
+- [x] Publish the support site: https://leejustin.github.io/firstlight/ (support email hello@leejustin.com)
 - [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
 - [ ] Create the Pro in-app purchase in App Store Connect and test it in the sandbox
 - [ ] Run Light check on a real Duo for 30 minutes and record pillow lux
