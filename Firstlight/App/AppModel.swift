@@ -32,6 +32,9 @@ final class AppModel {
     /// backup isn't overwritten.
     func syncBackups(for settings: AlarmSettings) async {
         if let session, session.kind == .night { return }
+        #if DEBUG
+        if DebugLaunch.isTakingScreenshots { return }
+        #endif
         retireSpentOneOff(settings)
         updateWidgets(settings)
         let wakes = settings.isArmed

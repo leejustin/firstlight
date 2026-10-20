@@ -69,7 +69,7 @@ struct HomeView: View {
 
     private var wakeBlock: some View {
         TimelineView(.everyMinute) { context in
-            let now = context.date
+            let now = context.date.addingTimeInterval(AppClock.offset)
             let wake = settings.schedule.nextWake(after: now) ?? now
             let lightStarts = wake.addingTimeInterval(-settings.sunriseDuration)
             VStack(spacing: 14) {

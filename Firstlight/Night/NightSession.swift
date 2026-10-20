@@ -82,7 +82,7 @@ final class NightSession: Identifiable {
         alarmVolume: Double,
         snoozeLength: TimeInterval,
         backup: BackupAlarmService?,
-        now: Date = .now
+        now: Date = AppClock.now
     ) {
         self.kind = kind
         self.timeline = timeline
@@ -103,7 +103,7 @@ final class NightSession: Identifiable {
         isPro: Bool,
         backup: BackupAlarmService,
         resumingWake: Date? = nil,
-        now: Date = .now
+        now: Date = AppClock.now
     ) -> NightSession? {
         guard let wake = resumingWake ?? settings.schedule.nextWake(after: now) else { return nil }
         let isResuming = resumingWake != nil
@@ -133,7 +133,7 @@ final class NightSession: Identifiable {
     }
 
     /// The whole sunrise in a minute, to check placement. No backup alarm, no wind-down.
-    static func test(settings: AlarmSettings, isPro: Bool, now: Date = .now) -> NightSession {
+    static func test(settings: AlarmSettings, isPro: Bool, now: Date = AppClock.now) -> NightSession {
         let duration: TimeInterval = 60
         let sound = settings.effectiveSound(isPro: isPro)
         // Keep the real ratio of sound fade to sunrise length.
@@ -223,7 +223,7 @@ final class NightSession: Identifiable {
         }
     }
 
-    func tick(at date: Date = .now) {
+    func tick(at date: Date = AppClock.now) {
         now = date
         if let snoozeUntil, date >= snoozeUntil {
             self.snoozeUntil = nil

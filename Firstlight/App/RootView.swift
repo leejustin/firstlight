@@ -79,6 +79,8 @@ struct RootView: View {
         guard let screen = DebugLaunch.screen else { return }
         hasCompletedOnboarding = screen != "onboarding"
         if DebugLaunch.simulatesFold { model.posture.simulatesHalfFold = true }
+        if DebugLaunch.isTakingScreenshots { settings?.isArmed = true }
+        DebugLaunch.setScreenshotClock(sunriseDuration: settings?.sunriseDuration ?? 1800)
         if screen == "bedtime" { showsBedtimeCheck = true }
         if let settings, let session = DebugLaunch.session(settings: settings, isPro: model.isPro) {
             model.session = session
