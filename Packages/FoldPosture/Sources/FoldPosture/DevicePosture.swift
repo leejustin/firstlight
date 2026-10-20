@@ -13,6 +13,41 @@ public enum HingeState: Equatable, Sendable {
     case closed
 }
 
+/// One reading from the system's hinge sensor (`UIHinge` on iOS 27.1), without UIKit types so it
+/// can be tested anywhere.
+public struct HingeReading: Equatable, Sendable {
+    public enum Status: Equatable, Sendable {
+        case unknown
+        case closed
+        case partiallyOpen
+        case fullyOpen
+    }
+
+    public var status: Status
+    /// Radians, as reported. Apple warns the update rate and precision vary, so posture is decided
+    /// from `status`; the angle is kept for display and finer tuning.
+    public var angle: Double
+
+    public init(status: Status, angle: Double) {
+        self.status = status
+        self.angle = angle
+    }
+}
+
+public extension HingeState {
+    /// Translates a sensor reading. iOS reports the hinge's status and angle but not where it sits
+    /// in the window, so a partly open hinge is placed across the middle (`estimatedHinge`).
+    /// A nil reading means the view isn't in a hierarchy with a hinge: a regular iPhone.
+    init(reading: HingeReading?, windowSize: CGSize) {
+        switch reading?.status {
+        case nil, .unknown?: self = .unavailable
+        case .closed?: self = .closed
+        case .fullyOpen?: self = .open
+        case .partiallyOpen?: self = .halfOpen(frame: estimatedHinge(in: windowSize))
+        }
+    }
+}
+
 /// Which way gravity points relative to the screen.
 public enum GravityOrientation: Equatable, Sendable {
     case faceUp
@@ -85,7 +120,8 @@ public enum DevicePosture: Equatable, Sendable {
     }
 }
 
-/// A best guess at the hinge when the system doesn't give one: a horizontal line across the middle.
+/// Where the hinge is, given that iOS doesn't say: a horizontal line across the middle of the window.
+/// In the tent pose the interface rotates so the hinge runs left to right.
 public func estimatedHinge(in windowSize: CGSize) -> CGRect {
     CGRect(x: 0, y: windowSize.height / 2, width: windowSize.width, height: 0)
 }

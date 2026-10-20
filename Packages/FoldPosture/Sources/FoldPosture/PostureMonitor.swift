@@ -10,23 +10,27 @@ import UIKit
 @MainActor
 @Observable
 public final class PostureMonitor {
-    public private(set) var hinge: HingeState = .unavailable
+    /// The latest hinge sensor reading; nil on devices without a hinge.
+    public private(set) var hingeReading: HingeReading?
     public private(set) var orientation: GravityOrientation = .unknown
     public private(set) var windowSize: CGSize = .zero
 
     /// Development aid: behave like a half-folded Duo on hardware or simulators without a hinge.
     public var simulatesHalfFold = false
 
-    public var posture: DevicePosture {
-        let effectiveHinge: HingeState = simulatesHalfFold
+    public var hinge: HingeState {
+        simulatesHalfFold
             ? .halfOpen(frame: estimatedHinge(in: windowSize))
-            : hinge
-        return DevicePosture(hinge: effectiveHinge, orientation: orientation)
+            : HingeState(reading: hingeReading, windowSize: windowSize)
     }
 
-    /// Whether this device has reported a hinge at all.
+    public var posture: DevicePosture {
+        DevicePosture(hinge: hinge, orientation: orientation)
+    }
+
+    /// Whether this device has a hinge at all.
     public var isFoldable: Bool {
-        simulatesHalfFold || hinge != .unavailable
+        simulatesHalfFold || hingeReading != nil
     }
 
     @ObservationIgnored private let motion = CMMotionManager()
@@ -55,9 +59,8 @@ public final class PostureMonitor {
         }
     }
 
-    /// Feed hinge changes from the system's fold traits.
-    public func update(hinge: HingeState) {
-        if hinge != self.hinge { self.hinge = hinge }
+    func update(reading: HingeReading?) {
+        if reading != hingeReading { hingeReading = reading }
     }
 
     func update(windowSize: CGSize) {
@@ -85,7 +88,7 @@ private struct FoldPostureModifier: ViewModifier {
     }
 }
 
-/// A zero-content UIKit view that reports its window's size and fold traits to the monitor.
+/// A zero-content UIKit view that reports its window's size and the hinge to the monitor.
 private struct FoldTraitBridge: UIViewRepresentable {
     let monitor: PostureMonitor
 
@@ -101,20 +104,25 @@ private struct FoldTraitBridge: UIViewRepresentable {
 
     final class BridgeView: UIView {
         weak var monitor: PostureMonitor?
-        private var isRegistered = false
+
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            if #available(iOS 27.1, *) {
+                // Called with the current state when added to a window, then on every change.
+                // On iOS 27.0, or an iPhone without a hinge, posture falls back to gravity alone.
+                addInteraction(UIHingeInteraction { [weak self] _, update in
+                    self?.monitor?.update(reading: update.hinge.map(HingeReading.init))
+                })
+            }
+        }
+
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) is not supported")
+        }
 
         override func didMoveToWindow() {
             super.didMoveToWindow()
             report()
-            guard !isRegistered else { return }
-            isRegistered = true
-            // The iOS 27.1 SDK adds the hinge and posture traits. Register for them here and pass
-            // the result to `monitor.update(hinge:)`; until then the hinge stays `.unavailable` and
-            // posture falls back to gravity alone.
-            registerForTraitChanges([UITraitHorizontalSizeClass.self, UITraitVerticalSizeClass.self]) {
-                (view: BridgeView, _: UITraitCollection) in
-                view.report()
-            }
         }
 
         override func layoutSubviews() {
@@ -126,6 +134,19 @@ private struct FoldTraitBridge: UIViewRepresentable {
             guard let window else { return }
             monitor?.update(windowSize: window.bounds.size)
         }
+    }
+}
+@available(iOS 27.1, *)
+extension HingeReading {
+    @MainActor
+    init(_ hinge: UIHinge) {
+        let status: Status = switch hinge.status {
+        case .closed: .closed
+        case .partiallyOpen: .partiallyOpen
+        case .fullyOpen: .fullyOpen
+        default: .unknown
+        }
+        self.init(status: status, angle: Double(hinge.angle))
     }
 }
 #endif

@@ -40,6 +40,25 @@ struct DevicePostureTests {
     }
 }
 
+struct HingeReadingTests {
+    let window = CGSize(width: 800, height: 700)
+
+    @Test func noReadingMeansNoHinge() {
+        #expect(HingeState(reading: nil, windowSize: window) == .unavailable)
+        #expect(HingeState(reading: HingeReading(status: .unknown, angle: 0), windowSize: window) == .unavailable)
+    }
+
+    @Test func partlyOpenIsHalfOpenAcrossTheMiddle() {
+        let state = HingeState(reading: HingeReading(status: .partiallyOpen, angle: 1.9), windowSize: window)
+        #expect(state == .halfOpen(frame: CGRect(x: 0, y: 350, width: 800, height: 0)))
+    }
+
+    @Test func openAndClosed() {
+        #expect(HingeState(reading: HingeReading(status: .fullyOpen, angle: .pi), windowSize: window) == .open)
+        #expect(HingeState(reading: HingeReading(status: .closed, angle: 0), windowSize: window) == .closed)
+    }
+}
+
 struct FoldLayoutTests {
     @Test func splitsAtTheHinge() {
         let posture = DevicePosture.halfFolded(hinge: CGRect(x: 0, y: 400, width: 600, height: 20))

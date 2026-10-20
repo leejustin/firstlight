@@ -8,8 +8,8 @@ The phone stands half-folded on the nightstand with its top half aimed at your p
 Open `Firstlight.xcodeproj` and run the **Firstlight** scheme. The scheme uses `Firstlight.storekit`, so Pro can be bought in the simulator.
 
 - Target: iOS 27, iPhone only, Swift 6 with main-actor default isolation.
-- Ship with Xcode 27.1 and the iOS 27.1 SDK, which adds the Duo's posture and hinge traits (without it the inner screen shows black borders). The project currently builds with Xcode 27.0.
-- iCloud sync needs a development team. Set it under Signing, then make sure the container `iCloud.com.leejustin.firstlight` exists. Without a team, settings stay on the device.
+- Build with Xcode 27.1 and the iOS 27.1 SDK; older SDKs show black borders on the Duo's inner screen. The deployment target stays iOS 27.0, and hinge support switches on at 27.1.
+- iCloud sync needs a development team. Set it under Signing, then make sure the container `iCloud.app.firstlight` exists. Without a team, settings stay on the device.
 
 ## Layout
 
@@ -27,7 +27,9 @@ Open `Firstlight.xcodeproj` and run the **Firstlight** scheme. The scheme uses `
 
 ## Hinge detection
 
-The iOS 27.0 SDK has no hinge or posture traits yet. `PostureMonitor` already combines a `HingeState` with gravity from CoreMotion. When building against 27.1, register for the new traits in `FoldTraitBridge` (`PostureMonitor.swift`) and call `monitor.update(hinge:)`; nothing else changes. Until then a regular-iPhone posture (flat / standing / face down) comes from gravity, and **Settings › Simulate half-fold** splits the screen at its midpoint, as on a folded Duo.
+On iOS 27.1, `FoldTraitBridge` (`PostureMonitor.swift`) adds a `UIHingeInteraction` and feeds each `UIHinge` reading to `PostureMonitor`. iOS reports the hinge's status and angle but not where it sits on screen, so a partly open hinge is placed across the middle of the window (`estimatedHinge`). On iOS 27.0, or an iPhone without a hinge, posture comes from gravity alone (flat / standing / face down).
+
+**Settings › Simulate half-fold** splits the screen at its midpoint, for simulators without a hinge. On the iPhone Duo simulator, change postures with Xcode's DeviceHub.
 
 ## Sounds and icon
 
@@ -46,7 +48,7 @@ swift tools/make_icon.swift Firstlight/Resources/Assets.xcassets/AppIcon.appicon
 Debug builds can open straight to any screen, which is handy for design review and App Store screenshots:
 
 ```bash
-xcrun simctl launch booted com.leejustin.firstlight -screen sunrise:0.4 -simulateFold YES -pro YES
+xcrun simctl launch booted app.firstlight -screen sunrise:0.4 -simulateFold YES -pro YES
 ```
 
 Screens: `onboarding`, `home`, `time`, `light`, `sound`, `windDown`, `settings`, `pro`, `bedtime`, `windDownNight`, `night`, `sunrise:<0…1>`, `ringing`, `snoozed`, `morning`, `test`.
