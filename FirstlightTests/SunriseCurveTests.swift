@@ -73,3 +73,38 @@ struct SunriseWindowTests {
         #expect(window.progress(at: wake.addingTimeInterval(60)) == 1)
     }
 }
+
+struct LampStateTests {
+    let curve = SunriseCurve(style: .dawn)
+
+    @Test func lampsStayOffUntilFirstLight() {
+        #expect(curve.lampState(at: 0) == .off)
+    }
+
+    @Test func lampsStartDeepRedAndDim() {
+        let early = curve.lampState(at: 0.05)
+        #expect(early.isOn)
+        #expect(early.brightness == 1)
+        #expect(early.hue < 15 || early.hue > 345)
+        #expect(early.saturation > 80)
+        #expect(!early.prefersWhite)
+    }
+
+    @Test func lampsFinishAtFullDaylight() {
+        let end = curve.lampState(at: 1)
+        #expect(end.brightness == 100)
+        #expect(end.prefersWhite)
+        #expect(end.mireds == Int((1_000_000 / 6500.0).rounded()))
+    }
+
+    @Test func emberEndsWarmer() {
+        let ember = SunriseCurve(style: .ember).lampState(at: 1)
+        #expect(ember.mireds > curve.lampState(at: 1).mireds)
+    }
+
+    @Test func hueSaturationOfPrimaries() {
+        #expect(LightColor(red: 1, green: 0, blue: 0).hueSaturation == (0, 100))
+        #expect(LightColor(red: 0, green: 1, blue: 0).hueSaturation.hue == 120)
+        #expect(LightColor(red: 1, green: 1, blue: 1).hueSaturation.saturation == 0)
+    }
+}

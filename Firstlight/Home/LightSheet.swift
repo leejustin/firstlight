@@ -82,6 +82,8 @@ struct LightSheet: View {
 
                 TorchBoostSection(settings: settings)
 
+                HomeLampsSection(settings: settings, showPro: showPro)
+
                 Toggle(isOn: $settings.hdrBoost) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Extra-bright finish")
@@ -282,5 +284,148 @@ struct TorchBoostSection: View {
             return "The flashlight is on the back, so it shines on the wall behind the phone. Fold it with the camera half on top, near a light-colored wall."
         }
         return "The flashlight is on the back, so it shines on the wall behind the phone. Works best with a light-colored wall close behind the nightstand."
+    }
+}
+
+/// Pro: pick HomeKit lamps to follow the sunrise, and try them.
+struct HomeLampsSection: View {
+    @Bindable var settings: AlarmSettings
+    var showPro: () -> Void
+
+    @Environment(AppModel.self) private var model
+    @State private var isPreviewing = false
+
+    private var lights: HomeLights { model.homeLights }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 8) {
+                Eyebrow("HomeKit lamps")
+                if !model.isPro { ProBadge() }
+            }
+
+            if model.isPro {
+                Toggle(isOn: $settings.homeLampsEnabled) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Brighten lamps with the sunrise")
+                            .scaledFont(16, weight: .medium, design: .rounded)
+                            .foregroundStyle(Palette.ink)
+                        Text("Color lamps follow the red-to-white path. White lamps warm up, then cool to daylight.")
+                            .scaledFont(13, design: .rounded)
+                            .foregroundStyle(Palette.inkSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                .tint(Palette.ember)
+
+                if settings.homeLampsEnabled {
+                    lampList
+                }
+            } else {
+                Button(action: showPro) {
+                    HStack {
+                        Text("Your HomeKit lamps can follow the sunrise too, for far more light than a screen.")
+                            .scaledFont(14, design: .rounded)
+                            .foregroundStyle(Palette.inkSecondary)
+                            .multilineTextAlignment(.leading)
+                        Spacer(minLength: 8)
+                        Image(systemName: "chevron.right")
+                            .scaledFont(13, weight: .semibold, design: .default)
+                            .foregroundStyle(Palette.inkTertiary)
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .animation(.smooth, value: settings.homeLampsEnabled)
+        .onChange(of: settings.homeLampsEnabled, initial: true) { _, enabled in
+            if enabled && model.isPro { lights.connect() }
+        }
+    }
+
+    @ViewBuilder
+    private var lampList: some View {
+        switch lights.access {
+        case .denied:
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Firstlight doesn't have access to your Home.")
+                    .scaledFont(14, design: .rounded)
+                    .foregroundStyle(Palette.inkSecondary)
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    Link("Open Settings", destination: url)
+                        .scaledFont(14, weight: .medium, design: .rounded)
+                        .foregroundStyle(Palette.amber)
+                }
+            }
+        case .notAsked, .allowed:
+            if lights.isLoading {
+                ProgressView().tint(Palette.amber)
+            } else if lights.lamps.isEmpty {
+                Text("No lights found in the Home app.")
+                    .scaledFont(14, design: .rounded)
+                    .foregroundStyle(Palette.inkSecondary)
+            } else {
+                VStack(spacing: 0) {
+                    ForEach(lights.lamps) { lamp in
+                        lampRow(lamp)
+                        if lamp != lights.lamps.last {
+                            Rectangle().fill(Palette.hairline).frame(height: 1)
+                        }
+                    }
+                }
+                .padding(.horizontal, 14)
+                .background(RoundedRectangle(cornerRadius: 18).fill(.white.opacity(0.03)))
+                .overlay(RoundedRectangle(cornerRadius: 18).strokeBorder(Palette.hairline))
+
+                Button {
+                    guard !isPreviewing else { return }
+                    isPreviewing = true
+                    Task {
+                        await lights.preview(Set(settings.homeLampIDs), curve: settings.curve(isPro: model.isPro))
+                        isPreviewing = false
+                    }
+                } label: {
+                    Label(isPreviewing ? "Running a short sunrise…" : "Try a 10-second sunrise", systemImage: "lightbulb.max")
+                }
+                .buttonStyle(.glassCapsule)
+                .disabled(isPreviewing || settings.homeLampIDs.isEmpty)
+            }
+        }
+    }
+
+    private func lampRow(_ lamp: HomeLights.Lamp) -> some View {
+        let isOn = settings.homeLampIDs.contains(lamp.id)
+        return Button {
+            if isOn {
+                settings.homeLampIDs.removeAll { $0 == lamp.id }
+            } else {
+                settings.homeLampIDs.append(lamp.id)
+            }
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: isOn ? "lightbulb.fill" : "lightbulb")
+                    .foregroundStyle(isOn ? Palette.amber : Palette.inkTertiary)
+                    .frame(width: 22)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(lamp.name)
+                        .scaledFont(15, weight: .medium, design: .rounded)
+                        .foregroundStyle(Palette.ink)
+                    Text([lamp.room, lamp.home].compactMap { $0 }.joined(separator: ", "))
+                        .scaledFont(12, design: .rounded)
+                        .foregroundStyle(Palette.inkTertiary)
+                }
+                Spacer()
+                if isOn {
+                    Image(systemName: "checkmark")
+                        .scaledFont(13, weight: .bold, design: .default)
+                        .foregroundStyle(Palette.amber)
+                }
+            }
+            .padding(.vertical, 12)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isOn ? .isSelected : [])
     }
 }

@@ -67,6 +67,8 @@ final class NightSession: Identifiable {
     @ObservationIgnored private let sound = SoundEngine()
     @ObservationIgnored private let torch = TorchController()
     @ObservationIgnored private weak var backup: BackupAlarmService?
+    @ObservationIgnored private weak var lamps: HomeLights?
+    @ObservationIgnored private var lampIDs: Set<String> = []
     @ObservationIgnored private var loop: Task<Void, Never>?
 
     /// Nature sound sits under the alarm; this is its ceiling.
@@ -183,7 +185,17 @@ final class NightSession: Identifiable {
         }
     }
 
+    /// HomeKit lamps to brighten along with the screen.
+    func attach(lamps: HomeLights, ids: Set<String>) {
+        guard !ids.isEmpty else { return }
+        self.lamps = lamps
+        lampIDs = ids
+        lamps.connect()
+    }
+
     func end() {
+        // A test shouldn't leave the bedroom lights on; a real morning should.
+        if kind == .test { lamps?.turnOff(lampIDs) }
         loop?.cancel()
         loop = nil
         sound.stopAll(fade: 0.8)
@@ -245,9 +257,11 @@ final class NightSession: Identifiable {
             checkThrottle(requested: target)
             sound.setNature(natureSound, volume: timeline.natureLevel(at: now) * Self.natureCeiling)
             torch.set(level: timeline.torchLevel(at: now))
+            lamps?.apply(curve.lampState(at: progress), to: lampIDs)
         case .ringing:
             screen.setBrightness(1)
             torch.set(level: timeline.torchStrength)
+            lamps?.apply(curve.lampState(at: 1), to: lampIDs)
             checkThrottle(requested: 1)
             sound.setNature(natureSound, volume: Self.natureCeiling)
             let ringing = now.timeIntervalSince(ringStartedAt ?? now)

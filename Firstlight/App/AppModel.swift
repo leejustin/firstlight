@@ -10,6 +10,7 @@ final class AppModel {
     let backup = BackupAlarmService()
     let power = PowerMonitor()
     let posture = PostureMonitor()
+    let homeLights = HomeLights()
 
     var session: NightSession?
 
@@ -59,6 +60,7 @@ final class AppModel {
         }
         await syncBackups(for: settings)
         session = NightSession.night(settings: settings, isPro: isPro, backup: backup)
+        attachLamps(settings)
         if let session { ActiveNight(wake: session.wake).save() }
     }
 
@@ -66,11 +68,18 @@ final class AppModel {
     func resumeNightIfNeeded(with settings: AlarmSettings) {
         guard session == nil, let active = ActiveNight.load() else { return }
         session = NightSession.night(settings: settings, isPro: isPro, backup: backup, resumingWake: active.wake)
+        attachLamps(settings)
         if let snoozeUntil = active.snoozeUntil { session?.restoreSnooze(until: snoozeUntil) }
     }
 
     func beginTest(with settings: AlarmSettings) {
         session = NightSession.test(settings: settings, isPro: isPro)
+        attachLamps(settings)
+    }
+
+    private func attachLamps(_ settings: AlarmSettings) {
+        guard isPro, settings.homeLampsEnabled else { return }
+        session?.attach(lamps: homeLights, ids: Set(settings.homeLampIDs))
     }
 
     func finishSession(settings: AlarmSettings) {

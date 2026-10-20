@@ -13,6 +13,8 @@ nonisolated struct SunriseStyle: Identifiable, Hashable, Sendable {
     let tagline: String
     let stops: [Stop]
     let isPro: Bool
+    /// Where the white end of the sunrise lands, for lamps that only do color temperature.
+    var endKelvin: Double = 6500
 
     /// Hue at a point in the sunrise, 0...1.
     func color(at progress: Double) -> LightColor {
@@ -59,7 +61,8 @@ nonisolated extension SunriseStyle {
             Stop(position: 0.70, color: LightColor(hex: 0xFFA347)),
             Stop(position: 1.00, color: LightColor(kelvin: 3800)),
         ],
-        isPro: true
+        isPro: true,
+        endKelvin: 3800
     )
 
     static let coastal = SunriseStyle(
@@ -74,7 +77,8 @@ nonisolated extension SunriseStyle {
             Stop(position: 0.82, color: LightColor(hex: 0xFFD3B5)),
             Stop(position: 1.00, color: LightColor(kelvin: 6000)),
         ],
-        isPro: true
+        isPro: true,
+        endKelvin: 6000
     )
 
     static let nordic = SunriseStyle(
@@ -88,7 +92,8 @@ nonisolated extension SunriseStyle {
             Stop(position: 0.72, color: LightColor(hex: 0xFFE2B0)),
             Stop(position: 1.00, color: LightColor(kelvin: 7500)),
         ],
-        isPro: true
+        isPro: true,
+        endKelvin: 7500
     )
 
     static let customID = "custom"
@@ -108,7 +113,8 @@ nonisolated extension SunriseStyle {
                 Stop(position: 0.76, color: LightColor(kelvin: min(2300, end))),
                 Stop(position: 1.00, color: LightColor(kelvin: end)),
             ],
-            isPro: true
+            isPro: true,
+            endKelvin: end
         )
     }
 

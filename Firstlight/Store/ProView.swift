@@ -37,7 +37,7 @@ struct ProView: View {
                     feature("chart.line.uptrend.xyaxis", "Custom curves", "Two more ways for the brightness to rise.")
                     feature("music.note", "All sounds", "Soft rain and wind chimes alongside birdsong.")
                     feature("moon.haze", "Wind-down sunset", "A dim orange glow at bedtime that fades out over 5–20 minutes.")
-                    feature("lightbulb.2", "HomeKit lights", "Coming later: HomeKit lamps that brighten along with the screen.", soon: true)
+                    feature("lightbulb.2", "HomeKit lamps", "Your lamps follow the sunrise too, from deep red to daylight, for much more light than a screen.")
                 }
                 .glassPanel(cornerRadius: 28, padding: 22)
 
@@ -90,7 +90,7 @@ struct ProView: View {
         }
     }
 
-    private func feature(_ symbol: String, _ title: String, _ detail: String, soon: Bool = false) -> some View {
+    private func feature(_ symbol: String, _ title: String, _ detail: String) -> some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: symbol)
                 .scaledFont(18, design: .default)

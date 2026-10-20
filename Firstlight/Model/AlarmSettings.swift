@@ -29,6 +29,10 @@ final class AlarmSettings {
     var torchMinutes: Int = 5
     var torchStrength: Double = 1.0
 
+    /// Pro: HomeKit lamps that follow the sunrise. IDs are HomeKit service identifiers.
+    var homeLampsEnabled: Bool = false
+    var homeLampIDs: [String] = []
+
     var windDownEnabled: Bool = false
     var windDownMinutes: Int = 10
 
