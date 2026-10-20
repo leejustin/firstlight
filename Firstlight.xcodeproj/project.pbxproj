@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FCABCCB69E704B3AB0B285F5 /* FirstlightWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8E3AF1A18AF947C7A2A65BF7 /* FirstlightWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		86AD2ED94ECF4C06A1AD3F7B /* FoldPosture in Frameworks */ = {isa = PBXBuildFile; productRef = DE7A7E28CC324F31B7359115 /* FoldPosture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8F6AFC1FAEAF426191012B1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7BEEA3B82024CB6866A084B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 719B0C29BF4D48638D0F0676;
+			remoteInfo = FirstlightWidgets;
+		};
 		8EB82E82D0424345BCAD8832 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7BEEA3B82024CB6866A084B /* Project object */;
@@ -20,13 +28,36 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C6B6C0020AB7432594D7885F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FCABCCB69E704B3AB0B285F5 /* FirstlightWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8E3AF1A18AF947C7A2A65BF7 /* FirstlightWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FirstlightWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B524D521890247DFBA95346F /* Firstlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Firstlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CF347C7BB8430C9F7B40EF /* FirstlightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstlightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAC3A37326C4ACE8A6916F3 /* Firstlight.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Firstlight.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FD062A7EB2344D13A02A4A25 /* Exceptions for "FirstlightWidgets" folder in "FirstlightWidgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FirstlightWidgets.entitlements,
+				Info.plist,
+			);
+			target = 719B0C29BF4D48638D0F0676 /* FirstlightWidgets */;
+		};
 		5AF663F3B54C498BAA4E8628 /* Exceptions for "Firstlight" folder in "Firstlight" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -38,6 +69,19 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		5524A60889F64EF192592806 /* FirstlightWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FD062A7EB2344D13A02A4A25 /* Exceptions for "FirstlightWidgets" folder in "FirstlightWidgets" target */,
+			);
+			path = FirstlightWidgets;
+			sourceTree = "<group>";
+		};
+		0BADF464CC0C4AFDB68C94CC /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		3CA5B802941F438188E6D561 /* Firstlight */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -54,6 +98,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F76DFD849575435780A4730A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EF1BA2DEFA7341969BE71491 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,6 +128,8 @@
 			children = (
 				3CA5B802941F438188E6D561 /* Firstlight */,
 				7BD2D18F09D74E5280EBC038 /* FirstlightTests */,
+				5524A60889F64EF192592806 /* FirstlightWidgets */,
+				0BADF464CC0C4AFDB68C94CC /* Shared */,
 				7DAC3A37326C4ACE8A6916F3 /* Firstlight.storekit */,
 				06EC7739C94747B4BF769B37 /* Products */,
 			);
@@ -87,6 +140,7 @@
 			children = (
 				B524D521890247DFBA95346F /* Firstlight.app */,
 				D3CF347C7BB8430C9F7B40EF /* FirstlightTests.xctest */,
+				8E3AF1A18AF947C7A2A65BF7 /* FirstlightWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +148,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		719B0C29BF4D48638D0F0676 /* FirstlightWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CF4E5BCFE8B47829AE17D68 /* Build configuration list for PBXNativeTarget "FirstlightWidgets" */;
+			buildPhases = (
+				FB5FA1A7F4D34A30AC22C59F /* Sources */,
+				F76DFD849575435780A4730A /* Frameworks */,
+				8520DFDE1DC34102BBA14A7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5524A60889F64EF192592806 /* FirstlightWidgets */,
+				0BADF464CC0C4AFDB68C94CC /* Shared */,
+			);
+			name = FirstlightWidgets;
+			packageProductDependencies = (
+			);
+			productName = FirstlightWidgets;
+			productReference = 8E3AF1A18AF947C7A2A65BF7 /* FirstlightWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		012483896FD94DCA8E52C02B /* Firstlight */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C14EA86554134EB0AD33EC10 /* Build configuration list for PBXNativeTarget "Firstlight" */;
@@ -101,13 +178,16 @@
 				E215E4A7C61448B389650FCC /* Sources */,
 				EF1BA2DEFA7341969BE71491 /* Frameworks */,
 				C41F2DC1F78140348CD72CBF /* Resources */,
+				C6B6C0020AB7432594D7885F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				64087E45E2B84CF3865C415A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				3CA5B802941F438188E6D561 /* Firstlight */,
+				0BADF464CC0C4AFDB68C94CC /* Shared */,
 			);
 			name = Firstlight;
 			packageProductDependencies = (
@@ -150,6 +230,9 @@
 				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2700;
 				TargetAttributes = {
+					719B0C29BF4D48638D0F0676 = {
+						CreatedOnToolsVersion = 27.1;
+					};
 					012483896FD94DCA8E52C02B = {
 						CreatedOnToolsVersion = 27.0;
 					};
@@ -178,11 +261,19 @@
 			targets = (
 				012483896FD94DCA8E52C02B /* Firstlight */,
 				9AA5601912474C89A7925557 /* FirstlightTests */,
+				719B0C29BF4D48638D0F0676 /* FirstlightWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8520DFDE1DC34102BBA14A7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C41F2DC1F78140348CD72CBF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -200,6 +291,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FB5FA1A7F4D34A30AC22C59F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E215E4A7C61448B389650FCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,6 +315,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		64087E45E2B84CF3865C415A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 719B0C29BF4D48638D0F0676 /* FirstlightWidgets */;
+			targetProxy = 8F6AFC1FAEAF426191012B1F /* PBXContainerItemProxy */;
+		};
 		CF14BDC1CD13419F9E9170BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 012483896FD94DCA8E52C02B /* Firstlight */;
@@ -225,6 +328,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		B20EF56B08444187B6574D96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FirstlightWidgets/FirstlightWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirstlightWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		245684744DB943B58359D23E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FirstlightWidgets/FirstlightWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirstlightWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		2DE31608AD4241359646D2BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -397,6 +552,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0CF4E5BCFE8B47829AE17D68 /* Build configuration list for PBXNativeTarget "FirstlightWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B20EF56B08444187B6574D96 /* Debug */,
+				245684744DB943B58359D23E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BCEE3680B9D44B57B14BF865 /* Build configuration list for PBXProject "Firstlight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -64,6 +64,8 @@ struct RootView: View {
             }
             .onChange(of: settings.isArmed) { syncBackups(settings) }
             .onChange(of: settings.schedule) { syncBackups(settings) }
+            .onChange(of: settings.snoozeMinutes) { syncBackups(settings) }
+            .onChange(of: settings.sunriseMinutes) { syncBackups(settings) }
         } else {
             OnboardingView {
                 withAnimation(.easeInOut(duration: 0.8)) { hasCompletedOnboarding = true }

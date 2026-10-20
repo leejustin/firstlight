@@ -3,8 +3,6 @@ import AlarmKit
 import Foundation
 import SwiftUI
 
-nonisolated struct BackupAlarmMetadata: AlarmMetadata {}
-
 /// The safety net: a system alarm two minutes after each wake time, so the phone still rings if
 /// Firstlight was closed overnight. When the in-app alarm is dismissed, that morning's backup is
 /// cancelled.
@@ -18,6 +16,8 @@ final class BackupAlarmService {
 
     private(set) var authorization: AlarmManager.AuthorizationState = .notDetermined
     private(set) var lastError: String?
+    /// How long the system alarm's Snooze button waits. Set from the user's snooze length.
+    var snoozeLength: TimeInterval = 9 * 60
 
     private var manager: AlarmManager { AlarmManager.shared }
     private let storeKey = "backupAlarms"
@@ -150,12 +150,18 @@ final class BackupAlarmService {
 
     private func schedule(id: UUID, at date: Date) async -> Bool {
         guard date > .now else { return false }
-        let alert = AlarmPresentation.Alert(title: "Wake up")
+        // Snooze counts down on the Lock Screen through the widget extension's Live Activity.
+        let alert = AlarmPresentation.Alert(
+            title: "Wake up",
+            secondaryButton: AlarmButton(text: "Snooze", textColor: Palette.ink, systemImageName: "zzz"),
+            secondaryButtonBehavior: .countdown
+        )
         let attributes = AlarmAttributes<BackupAlarmMetadata>(
-            presentation: AlarmPresentation(alert: alert),
+            presentation: AlarmPresentation(alert: alert, countdown: AlarmPresentation.Countdown(title: "Snoozing")),
             tintColor: Palette.ember
         )
-        let configuration = AlarmManager.AlarmConfiguration<BackupAlarmMetadata>.alarm(
+        let configuration = AlarmManager.AlarmConfiguration<BackupAlarmMetadata>(
+            countdownDuration: Alarm.CountdownDuration(preAlert: nil, postAlert: snoozeLength),
             schedule: .fixed(date),
             attributes: attributes,
             sound: .named("\(SoundEngine.alarmFileName).caf")

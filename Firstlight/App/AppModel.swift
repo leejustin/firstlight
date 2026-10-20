@@ -1,6 +1,7 @@
 import FoldPosture
 import Observation
 import SwiftUI
+import WidgetKit
 
 /// App-wide services and the one night that may be running.
 @MainActor
@@ -32,10 +33,23 @@ final class AppModel {
     func syncBackups(for settings: AlarmSettings) async {
         if let session, session.kind == .night { return }
         retireSpentOneOff(settings)
+        updateWidgets(settings)
         let wakes = settings.isArmed
             ? settings.schedule.upcomingWakes(after: .now, limit: BackupAlarmService.horizon)
             : []
+        backup.snoozeLength = TimeInterval(settings.snoozeMinutes * 60)
         await backup.sync(wakes: wakes)
+    }
+
+    private func updateWidgets(_ settings: AlarmSettings) {
+        let snapshot = WidgetSnapshot(
+            isArmed: settings.isArmed,
+            nextWake: settings.schedule.nextWake(after: .now),
+            sunriseMinutes: settings.sunriseLength
+        )
+        guard snapshot != WidgetSnapshot.load() else { return }
+        snapshot.save()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     /// A one-off alarm is spent once its morning passes, however the user woke (in the app or
