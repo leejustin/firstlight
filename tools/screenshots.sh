@@ -30,8 +30,8 @@ xcrun simctl ui "$device" appearance dark
 
 shoot() {
   local name=$1; shift
-  xcrun simctl terminate "$device" app.firstlight >/dev/null 2>&1 || true
-  xcrun simctl launch "$device" app.firstlight "$@" -pro YES -screenshots YES >/dev/null
+  xcrun simctl terminate "$device" app.firstlight.alarm >/dev/null 2>&1 || true
+  xcrun simctl launch "$device" app.firstlight.alarm "$@" -pro YES -screenshots YES >/dev/null
   sleep 4
   xcrun simctl io "$device" screenshot --type=png "$out/$name.png" >/dev/null 2>&1
   echo "  $out/$name.png"

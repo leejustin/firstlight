@@ -6,7 +6,7 @@
 **Subtitle:** Wake to light before sound
 **Promotional text:** Made for iPhone Duo. Fold it like a tent and the sunrise aims itself at your pillow.
 **Category:** Lifestyle (secondary: Health & Fitness)
-**Price:** Free, with a $3.99 one-time Firstlight Pro (`app.firstlight.pro`, non-consumable, Family Sharing on)
+**Price:** Free, with a $3.99 one-time Firstlight Pro (`app.firstlight.alarm.pro`, non-consumable, Family Sharing on)
 
 **Keywords:** sunrise,alarm,wake up light,dawn,light alarm,gentle alarm,sleep,morning,duo,fold
 
@@ -92,7 +92,7 @@ Run it on a 6.9" simulator (an iPhone 18 Pro Max gives 1320 × 2868) and on the 
 
 - [ ] Build with Xcode 27.1 / iOS 27.1 SDK (avoids black borders on the Duo's inner screen)
 - [ ] Test in every posture in Device Hub, and on a regular iPhone
-- [ ] Set the development team, then register the app ID `app.firstlight`, the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight` and the HomeKit capability
+- [x] Register the app IDs `app.firstlight.alarm` and `app.firstlight.alarm.widgets`, the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight.alarm`, and HomeKit, iCloud, App Groups and Push for the app (`app.firstlight` was taken by another developer)
 - [x] Publish the support site: https://leejustin.github.io/firstlight/ (support email hello@leejustin.com)
 - [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
 - [ ] Create the Pro in-app purchase in App Store Connect and test it in the sandbox

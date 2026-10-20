@@ -6,7 +6,7 @@ nonisolated struct WidgetSnapshot: Codable, Equatable, Sendable {
     var nextWake: Date?
     var sunriseMinutes: Int
 
-    static let appGroup = "group.app.firstlight"
+    static let appGroup = "group.app.firstlight.alarm"
     private static let key = "widgetSnapshot"
 
     var sunriseStart: Date? {

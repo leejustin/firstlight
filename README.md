@@ -9,7 +9,7 @@ Open `Firstlight.xcodeproj` and run the **Firstlight** scheme. The scheme uses `
 
 - Target: iOS 27, iPhone only, Swift 6 with main-actor default isolation.
 - Build with Xcode 27.1 and the iOS 27.1 SDK; older SDKs show black borders on the Duo's inner screen. The deployment target stays iOS 27.0, and hinge support switches on at 27.1.
-- Signing needs a development team, with these registered: the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight` (shared with the widget) and the HomeKit capability. Without a team, settings stay on the device and the widget shows no alarm.
+- Signing needs a development team, with these registered: the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight.alarm` (shared with the widget) and the HomeKit capability. Without a team, settings stay on the device and the widget shows no alarm.
 
 ## Layout
 
@@ -51,7 +51,7 @@ swift tools/make_icon.swift Firstlight/Resources/Assets.xcassets/AppIcon.appicon
 Debug builds can open straight to any screen, which is handy for design review and App Store screenshots:
 
 ```bash
-xcrun simctl launch booted app.firstlight -screen sunrise:0.4 -simulateFold YES -pro YES
+xcrun simctl launch booted app.firstlight.alarm -screen sunrise:0.4 -simulateFold YES -pro YES
 ```
 
 Screens: `onboarding`, `home`, `time`, `light`, `sound`, `windDown`, `settings`, `pro`, `bedtime`, `windDownNight`, `night`, `sunrise:<0…1>`, `ringing`, `snoozed`, `morning`, `test`.
