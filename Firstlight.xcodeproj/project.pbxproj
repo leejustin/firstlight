@@ -334,7 +334,7 @@
 				CODE_SIGN_ENTITLEMENTS = FirstlightWidgets/FirstlightWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FirstlightWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
@@ -360,7 +360,7 @@
 				CODE_SIGN_ENTITLEMENTS = FirstlightWidgets/FirstlightWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FirstlightWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
@@ -453,7 +453,7 @@
 				CODE_SIGN_ENTITLEMENTS = Firstlight/Firstlight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Firstlight/Info.plist;
@@ -486,7 +486,7 @@
 				CODE_SIGN_ENTITLEMENTS = Firstlight/Firstlight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Firstlight/Info.plist;
@@ -517,7 +517,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.tests;
@@ -536,7 +536,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.tests;
