@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firstlight, a sunrise alarm for iPhone</title>
+  <meta name="description" content="Firstlight is a sunrise alarm for iPhone. Your screen fades from deep red to bright white before your alarm, so light starts waking you before sound. Made for iPhone Duo.">
+  <meta name="theme-color" content="#08070d">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="icon.png" alt="" width="32" height="32">
+        <span class="wordmark">firstlight</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <img class="hero-icon" src="icon.png" alt="Firstlight app icon: a sun rising over a dark horizon" width="96" height="96">
+        <h1>A sunrise alarm for your nightstand.</h1>
+        <p class="lede">Before your alarm goes off, Firstlight slowly fades your iPhone screen from deep red through amber to bright white. Light starts waking you before sound does.</p>
+        <p class="cta">Coming soon to the App Store</p>
+        <p class="price-note">Free. Firstlight Pro is a one-time $3.99 purchase.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="morning">
+      <div class="wrap">
+        <div class="prose">
+          <h2 id="morning">How a morning goes</h2>
+          <p>You choose how long the sunrise lasts, anywhere from 1 to 30 minutes. The default is 30.</p>
+        </div>
+        <ol class="timeline">
+          <li>
+            <span class="when">When the sunrise starts</span>
+            The screen comes up a very dim, deep red. Brightness rises slowly at first.
+          </li>
+          <li>
+            <span class="when">Along the way</span>
+            The red warms into amber, and the room slowly gets lighter.
+          </li>
+          <li>
+            <span class="when">The last few minutes</span>
+            If you picked a nature sound, it fades in quietly. Birdsong is free.
+          </li>
+          <li>
+            <span class="when">Wake time</span>
+            The screen is bright white and a soft marimba alarm plays.
+          </li>
+          <li>
+            <span class="when">Two minutes after</span>
+            If Firstlight was closed overnight, a regular system alarm rings as a backup.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="duo">
+      <div class="wrap split">
+        <div class="prose">
+          <h2 id="duo">Made for iPhone Duo</h2>
+          <p>Fold iPhone Duo halfway and stand it on the nightstand like a tent. The top half aims the light at your pillow. The bottom half lies flat and holds the snooze and stop buttons.</p>
+          <p>Firstlight also works on any iPhone running iOS 27. Use a stand, with the screen facing your pillow.</p>
+        </div>
+        <svg class="fold" viewBox="0 0 420 260" role="img" aria-labelledby="fold-title">
+          <title id="fold-title">Side view of iPhone Duo folded on a nightstand. The upright half shines light toward a pillow. The flat half holds the snooze and stop buttons.</title>
+          <defs>
+            <radialGradient id="beam" cx="1" cy="0.5" r="1">
+              <stop offset="0" stop-color="#ff8c2e" stop-opacity="0.55"/>
+              <stop offset="0.45" stop-color="#ee4a12" stop-opacity="0.22"/>
+              <stop offset="1" stop-color="#6e0a06" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="10"/>
+            </filter>
+          </defs>
+          <path d="M300 74 L300 196 L30 214 L30 40 Z" fill="url(#beam)" filter="url(#soft)"/>
+          <rect x="20" y="152" width="92" height="44" rx="20" fill="none" stroke="#f6eee6" stroke-opacity="0.35" stroke-width="2"/>
+          <line x1="0" y1="198" x2="124" y2="198" stroke="#f6eee6" stroke-opacity="0.18" stroke-width="2"/>
+          <line x1="140" y1="212" x2="420" y2="212" stroke="#f6eee6" stroke-opacity="0.18" stroke-width="2"/>
+          <line x1="150" y1="204" x2="304" y2="204" stroke="#f6eee6" stroke-width="5" stroke-linecap="round"/>
+          <line x1="304" y1="204" x2="318" y2="64" stroke="#f6eee6" stroke-width="5" stroke-linecap="round"/>
+          <line x1="300" y1="196" x2="313" y2="72" stroke="#ffb25c" stroke-width="3" stroke-linecap="round"/>
+          <text x="66" y="222" fill="#f6eee6" fill-opacity="0.6" font-size="15" text-anchor="middle" font-family="ui-rounded, -apple-system, system-ui, sans-serif">pillow</text>
+          <text x="227" y="232" fill="#f6eee6" fill-opacity="0.6" font-size="15" text-anchor="middle" font-family="ui-rounded, -apple-system, system-ui, sans-serif">snooze and stop</text>
+          <text x="332" y="56" fill="#f6eee6" fill-opacity="0.6" font-size="15" font-family="ui-rounded, -apple-system, system-ui, sans-serif">light</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="night">
+      <div class="wrap split">
+        <div class="prose">
+          <h2 id="night">A screen that stays out of the way</h2>
+          <p>Until the sunrise starts, the screen is pure black with a dim red clock. The clock drifts a few points each minute to protect the display.</p>
+          <p>Firstlight has to stay open on screen overnight for the sunrise to happen. If you lock the phone, the sunrise stops, but the backup alarm still rings. Keep it plugged in.</p>
+        </div>
+        <div class="night-screen" aria-hidden="true"><span>6:30</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="bedtime">
+      <div class="wrap">
+        <div class="prose">
+          <h2 id="bedtime">Before you go to sleep</h2>
+          <p><strong>Try a test sunrise.</strong> It runs the whole fade in 60 seconds, so you can check where the phone sits and how the light lands.</p>
+          <p><strong>Run through the bedtime checklist.</strong> It covers four things: charging, position, Low Power Mode, and volume.</p>
+          <p><strong>Add the flashlight, if you like.</strong> The flashlight boost fades in the rear flashlight over the last few minutes and lights the wall behind the phone. It is free and off by default.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="pricing">
+      <div class="wrap">
+        <div class="prose">
+          <h2 id="pricing">Free, with an optional Pro</h2>
+          <p>The sunrise, the alarm and the backup alarm are all free. Firstlight Pro is a single $3.99 purchase. There is no subscription.</p>
+        </div>
+        <div class="tiers">
+          <div class="tier">
+            <h3>Firstlight <span class="cost">Free</span></h3>
+            <ul class="plain-list">
+              <li>The sunrise, from 1 to 30 minutes</li>
+              <li>Birdsong and the marimba alarm</li>
+              <li>The black night screen with its drifting clock</li>
+              <li>Backup alarm</li>
+              <li>Test sunrise and bedtime checklist</li>
+              <li>Flashlight boost</li>
+            </ul>
+          </div>
+          <div class="tier">
+            <h3>Firstlight Pro <span class="cost">$3.99 once</span></h3>
+            <ul class="plain-list">
+              <li>More sunrise styles: Ember, Coastal, Nordic, and a custom end color</li>
+              <li>Two more brightness curves</li>
+              <li>Soft rain and wind chimes</li>
+              <li>A wind-down sunset: a dim orange glow that fades out at bedtime</li>
+              <li>HomeKit lamps that follow the sunrise, for far more light than a screen</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="honest">
+      <div class="wrap">
+        <div class="note">
+          <h2 id="honest">Worth knowing</h2>
+          <p>A phone screen is dimmer than a dedicated wake-up lamp. Closer is brighter. The <a href="support.html">support page</a> has tips for getting the most light out of it.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2026 Firstlight</p>
+      <nav aria-label="Footer">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
