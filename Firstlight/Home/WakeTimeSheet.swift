@@ -28,14 +28,14 @@ struct WakeTimeSheet: View {
                     Eyebrow("Repeat")
                     Spacer()
                     Text(settings.schedule.repeatSummary())
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .scaledFont(13, weight: .medium, design: .rounded)
                         .foregroundStyle(Palette.inkSecondary)
                 }
                 WeekdayPicker(schedule: $settings.schedule)
             }
 
             Text("The light starts \(settings.sunriseLength) minutes earlier, at \(TimeText.short(time.wrappedValue.addingTimeInterval(-settings.sunriseDuration))).")
-                .font(.system(size: 14, design: .rounded))
+                .scaledFont(14, design: .rounded)
                 .foregroundStyle(Palette.inkSecondary)
 
             Button("Done") { dismiss() }

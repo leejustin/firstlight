@@ -46,7 +46,7 @@ struct LightSheet: View {
                             Spacer()
                             Text("Crisp daylight")
                         }
-                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .scaledFont(11, weight: .medium, design: .rounded)
                         .foregroundStyle(Palette.inkTertiary)
                     }
                 }
@@ -65,10 +65,10 @@ struct LightSheet: View {
                                     .foregroundStyle(settings.curveShape == shape ? Palette.amber : Palette.inkTertiary)
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(shape.name)
-                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                        .scaledFont(16, weight: .medium, design: .rounded)
                                         .foregroundStyle(Palette.ink)
                                     Text(shape.detail)
-                                        .font(.system(size: 13, design: .rounded))
+                                        .scaledFont(13, design: .rounded)
                                         .foregroundStyle(Palette.inkSecondary)
                                 }
                                 Spacer()
@@ -85,10 +85,10 @@ struct LightSheet: View {
                 Toggle(isOn: $settings.hdrBoost) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Extra-bright finish")
-                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                            .scaledFont(16, weight: .medium, design: .rounded)
                             .foregroundStyle(Palette.ink)
                         Text("Uses HDR headroom for the last few minutes on displays that have it.")
-                            .font(.system(size: 13, design: .rounded))
+                            .scaledFont(13, design: .rounded)
                             .foregroundStyle(Palette.inkSecondary)
                     }
                 }
@@ -129,18 +129,18 @@ private struct StyleRow: View {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 8) {
                         Text(style.name)
-                            .font(.system(size: 17, weight: .medium, design: .rounded))
+                            .scaledFont(17, weight: .medium, design: .rounded)
                             .foregroundStyle(Palette.ink)
                         if isLocked { ProBadge() }
                     }
                     Text(style.tagline)
-                        .font(.system(size: 13, design: .rounded))
+                        .scaledFont(13, design: .rounded)
                         .foregroundStyle(Palette.inkSecondary)
                 }
                 Spacer(minLength: 0)
                 if isSelected {
                     Image(systemName: "checkmark")
-                        .font(.system(size: 14, weight: .bold))
+                        .scaledFont(14, weight: .bold, design: .default)
                         .foregroundStyle(Palette.amber)
                 }
             }
@@ -192,7 +192,7 @@ struct CurveChart: View {
             AxisMarks(values: [0, 1]) { value in
                 AxisValueLabel {
                     Text(value.as(Double.self) == 0 ? "First light" : "Wake")
-                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .scaledFont(11, weight: .medium, design: .rounded)
                         .foregroundStyle(Palette.inkTertiary)
                 }
             }
@@ -221,10 +221,10 @@ struct TorchBoostSection: View {
             Toggle(isOn: $settings.torchEnabled) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Add the flashlight at the end")
-                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                        .scaledFont(16, weight: .medium, design: .rounded)
                         .foregroundStyle(Palette.ink)
                     Text(placementHint)
-                        .font(.system(size: 13, design: .rounded))
+                        .scaledFont(13, design: .rounded)
                         .foregroundStyle(Palette.inkSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -236,11 +236,11 @@ struct TorchBoostSection: View {
                 Stepper(value: $settings.torchMinutes, in: AlarmSettings.torchMinutesRange) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Starts \(settings.torchMinutes) min before wake")
-                            .font(.system(size: 15, weight: .medium, design: .rounded))
+                            .scaledFont(15, weight: .medium, design: .rounded)
                             .foregroundStyle(Palette.ink)
                             .contentTransition(.numericText())
                         Text("Fades up to full by wake time, and stays on through snooze.")
-                            .font(.system(size: 12, design: .rounded))
+                            .scaledFont(12, design: .rounded)
                             .foregroundStyle(Palette.inkTertiary)
                     }
                 }
@@ -269,7 +269,7 @@ struct TorchBoostSection: View {
                 .disabled(isPreviewing)
             } else {
                 Text("This device has no flashlight.")
-                    .font(.system(size: 13, design: .rounded))
+                    .scaledFont(13, design: .rounded)
                     .foregroundStyle(Palette.inkTertiary)
             }
         }

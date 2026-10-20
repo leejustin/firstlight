@@ -15,7 +15,7 @@ struct LightCheckView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 Text("Holds the screen at full white and brightness, logging every 5 seconds what brightness iOS actually reports, plus heat and battery. Put a light meter where your eyes would be.")
-                    .font(.system(size: 15, design: .rounded))
+                    .scaledFont(15, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
 
                 Picker("Length", selection: $minutes) {
@@ -24,7 +24,7 @@ struct LightCheckView: View {
                 .pickerStyle(.segmented)
 
                 Toggle("HDR boost, as at the end of a sunrise", isOn: $hdrBoost)
-                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                    .scaledFont(15, weight: .medium, design: .rounded)
                     .tint(Palette.ember)
 
                 Button {
@@ -42,7 +42,7 @@ struct LightCheckView: View {
                         .padding(14)
                         .glassEffect(.regular, in: .rect(cornerRadius: 18))
                     Text("A dedicated wake-up lamp gives about 250–300 lux. The estimate for a phone is 30–70.")
-                        .font(.system(size: 13, design: .rounded))
+                        .scaledFont(13, design: .rounded)
                         .foregroundStyle(Palette.inkTertiary)
                 }
 
@@ -50,7 +50,7 @@ struct LightCheckView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Eyebrow("Last run")
                         Text(last)
-                            .font(.system(size: 15, design: .rounded))
+                            .scaledFont(15, design: .rounded)
                             .foregroundStyle(Palette.ink)
                     }
                 }
@@ -173,7 +173,7 @@ private struct LightCheckRunView: View {
                 Eyebrow(run.isFinished ? "Finished" : "Running", color: Palette.daylightInk.opacity(0.6))
                 Spacer()
                 Text(run.summary)
-                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                    .scaledFont(12, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.daylightInk.opacity(0.7))
             }
             Chart(run.samples) { sample in
@@ -187,7 +187,7 @@ private struct LightCheckRunView: View {
             .chartXScale(domain: 0...max(run.duration / 60, 1))
             .frame(height: 110)
             Text("Orange: brightness iOS reports. Dashed: heat. Tap the screen to hide this panel while measuring.")
-                .font(.system(size: 11, design: .rounded))
+                .scaledFont(11, design: .rounded)
                 .foregroundStyle(Palette.daylightInk.opacity(0.55))
             Button(run.isFinished ? "Close" : "Stop", action: onClose)
                 .buttonStyle(.daylight)

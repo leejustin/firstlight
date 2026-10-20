@@ -6,7 +6,7 @@ enum Palette {
     static let nightRaised = Color(red: 0.071, green: 0.063, blue: 0.102)
     static let ink = Color(red: 0.965, green: 0.933, blue: 0.902)
     static let inkSecondary = ink.opacity(0.62)
-    static let inkTertiary = ink.opacity(0.38)
+    static let inkTertiary = ink.opacity(0.52)
     static let hairline = Color.white.opacity(0.08)
 
     static let ember = Color(red: 1.0, green: 0.478, blue: 0.239)
@@ -36,6 +36,30 @@ extension Font {
     }
 }
 
+/// A rounded system font that follows the user's text size, like a text style, at the size the
+/// design calls for. Use it for anything smaller than display type.
+struct ScaledFont: ViewModifier {
+    @ScaledMetric private var size: CGFloat
+    private let weight: Font.Weight
+    private let design: Font.Design
+
+    init(size: CGFloat, weight: Font.Weight, design: Font.Design) {
+        _size = ScaledMetric(wrappedValue: size, relativeTo: size <= 13 ? .footnote : .body)
+        self.weight = weight
+        self.design = design
+    }
+
+    func body(content: Content) -> some View {
+        content.font(.system(size: size, weight: weight, design: design))
+    }
+}
+
+extension View {
+    func scaledFont(_ size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .rounded) -> some View {
+        modifier(ScaledFont(size: size, weight: weight, design: design))
+    }
+}
+
 /// Small tracked caps above a section: "WAKE", "SUNRISE".
 struct Eyebrow: View {
     let text: String
@@ -48,7 +72,7 @@ struct Eyebrow: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 13, weight: .semibold, design: .rounded))
+            .scaledFont(13, weight: .semibold, design: .rounded)
             .foregroundStyle(color)
     }
 }
@@ -71,7 +95,7 @@ struct ProBadge: View {
 struct GlowButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 17, weight: .semibold, design: .rounded))
+            .scaledFont(17, weight: .semibold, design: .rounded)
             .foregroundStyle(Color(red: 0.16, green: 0.07, blue: 0.03))
             .frame(maxWidth: .infinity, minHeight: 58)
             .background {
@@ -91,7 +115,7 @@ struct GlassCapsuleButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 15, weight: .medium, design: .rounded))
+            .scaledFont(15, weight: .medium, design: .rounded)
             .foregroundStyle(tint)
             .padding(.horizontal, 20)
             .frame(minHeight: 46)

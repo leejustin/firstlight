@@ -120,7 +120,7 @@ struct NightView: View {
                 .foregroundStyle(Palette.daylightInk)
             if let detail {
                 Text(detail)
-                    .font(.system(size: 15, weight: .regular, design: .rounded))
+                    .scaledFont(15, weight: .regular, design: .rounded)
                     .foregroundStyle(Palette.daylightInk.opacity(0.65))
                     .multilineTextAlignment(.center)
             }
@@ -164,7 +164,7 @@ struct NightView: View {
                 } else if onDarkHalf {
                     // The bottom half faces the ceiling, not the pillow: a quiet status is fine here.
                     Text(nightSummary)
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .scaledFont(13, weight: .medium, design: .rounded)
                         .foregroundStyle(Palette.nightRed.opacity(0.7))
                         .transition(.opacity)
                 }
@@ -200,7 +200,7 @@ struct NightView: View {
     private var nightControls: some View {
         VStack(spacing: 12) {
             Text(nightSummary)
-                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .scaledFont(13, weight: .medium, design: .rounded)
                 .foregroundStyle(ink.opacity(0.8))
                 .multilineTextAlignment(.center)
             HStack(spacing: 12) {
@@ -234,7 +234,7 @@ struct NightView: View {
             VStack(spacing: 4) {
                 ForEach(messages, id: \.self) { message in
                     Label(message, systemImage: "exclamationmark.triangle")
-                        .font(.system(size: 12, weight: .medium, design: .rounded))
+                        .scaledFont(12, weight: .medium, design: .rounded)
                 }
             }
             .foregroundStyle(isDaylight && !onDarkHalf ? Palette.daylightInk.opacity(0.7) : Palette.nightRed)
@@ -272,7 +272,7 @@ struct HoldToEndButton: View {
 
     var body: some View {
         Text("Hold to end night")
-            .font(.system(size: 15, weight: .medium, design: .rounded))
+            .scaledFont(15, weight: .medium, design: .rounded)
             .foregroundStyle(tint)
             .padding(.horizontal, 20)
             .frame(minHeight: 46)
@@ -302,7 +302,7 @@ struct HoldToEndButton: View {
 struct DaylightButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 18, weight: .semibold, design: .rounded))
+            .scaledFont(18, weight: .semibold, design: .rounded)
             .foregroundStyle(Color(red: 1, green: 0.96, blue: 0.9))
             .frame(maxWidth: .infinity, minHeight: 60)
             .background(Palette.daylightInk.opacity(configuration.isPressed ? 0.75 : 0.9), in: Capsule())
@@ -315,7 +315,7 @@ struct DaylightButtonStyle: ButtonStyle {
 struct DaylightOutlineButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 16, weight: .semibold, design: .rounded))
+            .scaledFont(16, weight: .semibold, design: .rounded)
             .foregroundStyle(Palette.daylightInk)
             .frame(maxWidth: .infinity, minHeight: 52)
             .background(Palette.daylightInk.opacity(configuration.isPressed ? 0.12 : 0.05), in: Capsule())

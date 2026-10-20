@@ -27,7 +27,7 @@ struct SunriseLengthSlider: View {
                         .frame(width: fillWidth)
                         .overlay(alignment: .leading) {
                             Text("\(minutes) min")
-                                .font(.system(size: 13, weight: .semibold, design: .rounded))
+                                .scaledFont(13, weight: .semibold, design: .rounded)
                                 .monospacedDigit()
                                 .foregroundStyle(Palette.ink.opacity(0.9))
                                 .padding(.leading, 18)
@@ -63,7 +63,7 @@ struct SunriseLengthSlider: View {
                 let span = Double(range.upperBound - range.lowerBound)
                 ForEach(marks, id: \.self) { mark in
                     Text("\(mark)")
-                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .scaledFont(11, weight: .medium, design: .rounded)
                         .foregroundStyle(mark == minutes ? Palette.ink : Palette.inkTertiary)
                         .fixedSize()
                         .position(

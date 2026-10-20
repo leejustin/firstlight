@@ -28,7 +28,7 @@ struct ProView: View {
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Palette.ink)
                     Text("One purchase, no subscription.")
-                        .font(.system(size: 15, design: .rounded))
+                        .scaledFont(15, design: .rounded)
                         .foregroundStyle(Palette.inkSecondary)
                 }
 
@@ -44,7 +44,7 @@ struct ProView: View {
                 VStack(spacing: 12) {
                     if model.isPro {
                         Label("You have Pro", systemImage: "checkmark.seal.fill")
-                            .font(.system(size: 17, weight: .semibold, design: .rounded))
+                            .scaledFont(17, weight: .semibold, design: .rounded)
                             .foregroundStyle(Palette.amber)
                             .frame(minHeight: 58)
                     } else {
@@ -75,7 +75,7 @@ struct ProView: View {
                     Button("Restore purchase") {
                         Task { await model.store.restore() }
                     }
-                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                    .scaledFont(14, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
                     .frame(minHeight: 44)
                 }
@@ -93,15 +93,15 @@ struct ProView: View {
     private func feature(_ symbol: String, _ title: String, _ detail: String, soon: Bool = false) -> some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: symbol)
-                .font(.system(size: 18))
-                .foregroundStyle(soon ? Palette.inkTertiary : Palette.amber)
+                .scaledFont(18, design: .default)
+                .foregroundStyle(Palette.amber)
                 .frame(width: 28)
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(.system(size: 16, weight: .semibold, design: .rounded))
-                    .foregroundStyle(soon ? Palette.inkSecondary : Palette.ink)
+                    .scaledFont(16, weight: .semibold, design: .rounded)
+                    .foregroundStyle(Palette.ink)
                 Text(detail)
-                    .font(.system(size: 14, design: .rounded))
+                    .scaledFont(14, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
             }
         }

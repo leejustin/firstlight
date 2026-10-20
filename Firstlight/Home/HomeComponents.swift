@@ -17,7 +17,7 @@ struct WeekdayPicker: View {
                     schedule = schedule.toggling(weekday: weekday)
                 } label: {
                     Text(symbols[weekday - 1])
-                        .font(.system(size: 13, weight: isOn ? .bold : .medium, design: .rounded))
+                        .scaledFont(13, weight: isOn ? .bold : .medium, design: .rounded)
                         .foregroundStyle(isOn ? Palette.night : Palette.inkSecondary)
                         .frame(width: 36, height: 36)
                         .background {
@@ -53,7 +53,7 @@ struct OptionTile: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top) {
                     Image(systemName: symbol)
-                        .font(.system(size: 18, weight: .regular))
+                        .scaledFont(18, weight: .regular, design: .default)
                         .foregroundStyle(accent)
                         .frame(height: 22)
                     Spacer(minLength: 0)
@@ -61,10 +61,10 @@ struct OptionTile: View {
                 }
                 Spacer(minLength: 18)
                 Text(title)
-                    .font(.system(size: 13, weight: .medium, design: .rounded))
+                    .scaledFont(13, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.inkTertiary)
                 Text(value)
-                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                    .scaledFont(15, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.ink)
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
@@ -93,7 +93,7 @@ struct ArmToggle: View {
                     .frame(width: 8, height: 8)
                     .shadow(color: isOn ? Palette.amber : .clear, radius: 6)
                 Text(isOn ? "Alarm on" : "Alarm off")
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .scaledFont(14, weight: .semibold, design: .rounded)
                     .foregroundStyle(isOn ? Palette.ink : Palette.inkSecondary)
                     .contentTransition(.interpolate)
             }

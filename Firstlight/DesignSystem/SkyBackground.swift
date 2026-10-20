@@ -42,6 +42,7 @@ struct SkyBackground: View {
             }
         }
         .ignoresSafeArea()
+        .accessibilityHidden(true)
     }
 }
 
@@ -183,5 +184,6 @@ struct HorizonMark: View {
                     .position(x: w / 2, y: horizon)
             }
         }
+        .accessibilityHidden(true)
     }
 }

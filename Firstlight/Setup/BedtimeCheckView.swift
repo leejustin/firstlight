@@ -88,16 +88,16 @@ struct BedtimeCheckView: View {
     private func row(_ status: Status, _ title: String, _ detail: String) -> some View {
         HStack(alignment: .top, spacing: 14) {
             Image(systemName: status.symbol)
-                .font(.system(size: 20))
+                .scaledFont(20, design: .default)
                 .foregroundStyle(status.color)
                 .frame(width: 26)
                 .contentTransition(.symbolEffect(.replace))
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
-                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                    .scaledFont(16, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.ink)
                 Text(detail)
-                    .font(.system(size: 13, design: .rounded))
+                    .scaledFont(13, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -111,17 +111,17 @@ struct BedtimeCheckView: View {
         HStack(alignment: .center, spacing: 14) {
             let authorized = model.backup.isAuthorized
             Image(systemName: authorized ? Status.good.symbol : Status.warn.symbol)
-                .font(.system(size: 20))
+                .scaledFont(20, design: .default)
                 .foregroundStyle(authorized ? Status.good.color : Status.warn.color)
                 .frame(width: 26)
             VStack(alignment: .leading, spacing: 3) {
                 Text("Backup alarm")
-                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                    .scaledFont(16, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.ink)
                 Text(authorized
                     ? "Rings at \(TimeText.short(backupTime)) if Firstlight is closed"
                     : "Not allowed. Without it, closing the app means no alarm.")
-                    .font(.system(size: 13, design: .rounded))
+                    .scaledFont(13, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
             }
             Spacer(minLength: 0)
@@ -149,7 +149,7 @@ struct BedtimeCheckView: View {
         HStack(spacing: 10) {
             Circle().fill(Palette.amber.opacity(0.7)).frame(width: 5, height: 5)
             Text(text)
-                .font(.system(size: 14, design: .rounded))
+                .scaledFont(14, design: .rounded)
                 .foregroundStyle(Palette.inkSecondary)
         }
     }

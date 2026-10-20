@@ -38,7 +38,7 @@ struct SoundSheet: View {
                         Image(systemName: "speaker.wave.3.fill").foregroundStyle(Palette.inkTertiary)
                     }
                     Text("A soft marimba rings at wake time and builds over 40 seconds. It plays even with the ringer off.")
-                        .font(.system(size: 13, design: .rounded))
+                        .scaledFont(13, design: .rounded)
                         .foregroundStyle(Palette.inkSecondary)
                 }
 
@@ -69,17 +69,17 @@ struct SoundSheet: View {
             } label: {
                 HStack(spacing: 14) {
                     Image(systemName: sound.symbol)
-                        .font(.system(size: 18))
+                        .scaledFont(18, design: .default)
                         .foregroundStyle(selected ? Palette.amber : Palette.inkSecondary)
                         .frame(width: 28)
                     Text(sound.name)
-                        .font(.system(size: 17, weight: .medium, design: .rounded))
+                        .scaledFont(17, weight: .medium, design: .rounded)
                         .foregroundStyle(Palette.ink)
                     if locked { ProBadge() }
                     Spacer()
                     if selected {
                         Image(systemName: "checkmark")
-                            .font(.system(size: 14, weight: .bold))
+                            .scaledFont(14, weight: .bold, design: .default)
                             .foregroundStyle(Palette.amber)
                     }
                 }
@@ -98,7 +98,7 @@ struct SoundSheet: View {
                     }
                 } label: {
                     Image(systemName: previewing == sound ? "stop.fill" : "play.fill")
-                        .font(.system(size: 12))
+                        .scaledFont(12, design: .default)
                         .foregroundStyle(Palette.ink)
                         .frame(width: 36, height: 36)
                         .glassEffect(.regular.interactive(), in: .circle)
@@ -122,7 +122,7 @@ struct SoundSheet: View {
             VStack(alignment: .leading, spacing: 4) {
                 Eyebrow(title)
                 Text(value)
-                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                    .scaledFont(16, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.ink)
                     .contentTransition(.numericText())
             }
@@ -144,11 +144,11 @@ struct WindDownSheet: View {
                 .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(Palette.hairline))
 
             Text("When you start the night, the screen shows a dim orange glow that fades to black over the time you pick.")
-                .font(.system(size: 15, design: .rounded))
+                .scaledFont(15, design: .rounded)
                 .foregroundStyle(Palette.inkSecondary)
 
             Toggle("Wind-down sunset", isOn: $settings.windDownEnabled)
-                .font(.system(size: 17, weight: .medium, design: .rounded))
+                .scaledFont(17, weight: .medium, design: .rounded)
                 .tint(Palette.ember)
 
             if settings.windDownEnabled {

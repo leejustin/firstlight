@@ -7,6 +7,7 @@ struct OnboardingView: View {
     @Environment(AppModel.self) private var model
     @State private var page = 0
     @State private var rise: Double = 0
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private let pageCount = 4
 
@@ -82,7 +83,7 @@ struct OnboardingView: View {
             HorizonMark(style: .dawn, rise: rise)
                 .frame(width: 220, height: 220)
                 .onAppear {
-                    withAnimation(.easeOut(duration: 3.2)) { rise = 1 }
+                    withAnimation(reduceMotion ? nil : .easeOut(duration: 3.2)) { rise = 1 }
                 }
         }
     }
@@ -138,15 +139,15 @@ struct OnboardingView: View {
     private func tip(_ symbol: String, _ title: String, _ detail: String) -> some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: symbol)
-                .font(.system(size: 18))
+                .scaledFont(18, design: .default)
                 .foregroundStyle(Palette.amber)
                 .frame(width: 28)
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.system(size: 17, weight: .medium, design: .rounded))
+                    .scaledFont(17, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.ink)
                 Text(detail)
-                    .font(.system(size: 14, design: .rounded))
+                    .scaledFont(14, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
             }
         }
@@ -167,7 +168,7 @@ struct OnboardingView: View {
                     .lineSpacing(2)
                 if let body {
                     Text(body)
-                        .font(.system(size: 16, design: .rounded))
+                        .scaledFont(16, design: .rounded)
                         .foregroundStyle(Palette.inkSecondary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(3)

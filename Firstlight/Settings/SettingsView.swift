@@ -101,16 +101,16 @@ struct SettingsView: View {
                     .frame(width: 44, height: 44)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(model.isPro ? "Firstlight Pro" : "Unlock Firstlight Pro")
-                        .font(.system(size: 17, weight: .semibold, design: .rounded))
+                        .scaledFont(17, weight: .semibold, design: .rounded)
                         .foregroundStyle(Palette.ink)
                     Text(model.isPro ? "Pro is unlocked." : "More styles, sounds and wind-down for \(model.store.displayPrice)")
-                        .font(.system(size: 13, design: .rounded))
+                        .scaledFont(13, design: .rounded)
                         .foregroundStyle(Palette.inkSecondary)
                 }
                 Spacer()
                 if !model.isPro {
                     Image(systemName: "chevron.right")
-                        .font(.system(size: 13, weight: .semibold))
+                        .scaledFont(13, weight: .semibold, design: .default)
                         .foregroundStyle(Palette.inkTertiary)
                 }
             }
@@ -144,7 +144,7 @@ private struct PlacementPage: View {
                     step("4", "Plug it in", "Full brightness for half an hour uses real power.")
                 }
                 Text("Run a test sunrise from the home screen to check the light reaches you.")
-                    .font(.system(size: 14, design: .rounded))
+                    .scaledFont(14, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
             }
             .padding(24)
@@ -160,8 +160,8 @@ private struct PlacementPage: View {
                 .foregroundStyle(Palette.amber)
                 .frame(width: 24)
             VStack(alignment: .leading, spacing: 4) {
-                Text(title).font(.system(size: 17, weight: .medium, design: .rounded)).foregroundStyle(Palette.ink)
-                Text(detail).font(.system(size: 14, design: .rounded)).foregroundStyle(Palette.inkSecondary)
+                Text(title).scaledFont(17, weight: .medium, design: .rounded).foregroundStyle(Palette.ink)
+                Text(detail).scaledFont(14, design: .rounded).foregroundStyle(Palette.inkSecondary)
             }
         }
     }
@@ -182,10 +182,10 @@ private struct BedtimeTipsPage: View {
 
     private func tip(_ title: String, _ detail: String, _ path: String?) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(title).font(.system(size: 17, weight: .semibold, design: .rounded)).foregroundStyle(Palette.ink)
-            Text(detail).font(.system(size: 14, design: .rounded)).foregroundStyle(Palette.inkSecondary)
+            Text(title).scaledFont(17, weight: .semibold, design: .rounded).foregroundStyle(Palette.ink)
+            Text(detail).scaledFont(14, design: .rounded).foregroundStyle(Palette.inkSecondary)
             if let path {
-                Text(path).font(.system(size: 12, weight: .medium, design: .rounded)).foregroundStyle(Palette.amber)
+                Text(path).scaledFont(12, weight: .medium, design: .rounded).foregroundStyle(Palette.amber)
             }
         }
         .padding(.vertical, 6)

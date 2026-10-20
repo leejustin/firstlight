@@ -7,6 +7,7 @@ struct HomeView: View {
 
     @Environment(AppModel.self) private var model
     @State private var sheet: HomeSheet?
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     enum HomeSheet: String, Identifiable {
         case time, light, sound, windDown, settings, pro
@@ -55,7 +56,7 @@ struct HomeView: View {
                 sheet = .settings
             } label: {
                 Image(systemName: "slider.horizontal.3")
-                    .font(.system(size: 16, weight: .medium))
+                    .scaledFont(16, weight: .medium, design: .default)
                     .foregroundStyle(Palette.ink)
                     .frame(width: 44, height: 44)
                     .glassEffect(.regular.interactive(), in: .circle)
@@ -84,7 +85,7 @@ struct HomeView: View {
                             .contentTransition(.numericText())
                         if let period = TimeText.period(wake) {
                             Text(period)
-                                .font(.system(size: 20, weight: .light, design: .rounded))
+                                .scaledFont(20, weight: .light, design: .rounded)
                                 .foregroundStyle(Palette.inkSecondary)
                         }
                     }
@@ -96,7 +97,7 @@ struct HomeView: View {
                 Text(settings.isArmed
                     ? "Light starts at \(TimeText.short(lightStarts)), in \(TimeText.until(lightStarts, from: now))"
                     : "Light starts at \(TimeText.short(lightStarts))")
-                    .font(.system(size: 15, weight: .regular, design: .rounded))
+                    .scaledFont(15, weight: .regular, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
                     .contentTransition(.numericText())
 
@@ -114,7 +115,7 @@ struct HomeView: View {
                 Eyebrow("Sunrise")
                 Spacer()
                 Text(curve.style.tagline)
-                    .font(.system(size: 13, weight: .medium, design: .rounded))
+                    .scaledFont(13, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
             }
             SunriseLengthSlider(minutes: $settings.sunriseLength, curve: curve)
@@ -123,7 +124,11 @@ struct HomeView: View {
 
     private var tiles: some View {
         let sound = settings.effectiveSound(isPro: model.isPro)
-        return HStack(spacing: 12) {
+        // Three across stops fitting at the largest text sizes, so they stack instead.
+        let layout = typeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(spacing: 12))
+            : AnyLayout(HStackLayout(spacing: 12))
+        return layout {
             OptionTile(symbol: "sun.horizon", title: "Light", value: "\(curve.style.name), \(curve.shape.name.lowercased())") {
                 sheet = .light
             }
@@ -156,7 +161,7 @@ struct HomeView: View {
 
             Button(action: onTest) {
                 Label("Try a 60-second sunrise", systemImage: "play.circle")
-                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                    .scaledFont(15, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
                     .frame(minHeight: 44)
             }

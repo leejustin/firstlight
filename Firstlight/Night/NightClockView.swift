@@ -24,7 +24,7 @@ struct NightClockView: View {
             .foregroundStyle(color)
             if let caption {
                 Text(caption)
-                    .font(.system(size: 13, weight: .medium, design: .rounded))
+                    .scaledFont(13, weight: .medium, design: .rounded)
                     .foregroundStyle(color.opacity(0.6))
             }
         }
