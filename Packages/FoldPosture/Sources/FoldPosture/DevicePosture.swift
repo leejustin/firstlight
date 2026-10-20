@@ -38,12 +38,15 @@ public extension HingeState {
     /// Translates a sensor reading. iOS reports the hinge's status and angle but not where it sits
     /// in the window, so a partly open hinge is placed across the middle (`estimatedHinge`).
     /// A nil reading means the view isn't in a hierarchy with a hinge: a regular iPhone.
+    ///
+    /// The half-folded laptop pose is the default: a foldable whose hinge state is unknown is
+    /// treated as partly open. Only a clear "fully open" or "closed" turns the split off.
     init(reading: HingeReading?, windowSize: CGSize) {
         switch reading?.status {
-        case nil, .unknown?: self = .unavailable
+        case nil: self = .unavailable
         case .closed?: self = .closed
         case .fullyOpen?: self = .open
-        case .partiallyOpen?: self = .halfOpen(frame: estimatedHinge(in: windowSize))
+        case .partiallyOpen?, .unknown?: self = .halfOpen(frame: estimatedHinge(in: windowSize))
         }
     }
 }

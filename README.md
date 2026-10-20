@@ -34,6 +34,8 @@ Open `Firstlight.xcodeproj` and run the **Firstlight** scheme. The scheme uses `
 
 On iOS 27.1, `FoldTraitBridge` (`PostureMonitor.swift`) adds a `UIHingeInteraction` and feeds each `UIHinge` reading to `PostureMonitor`. iOS reports the hinge's status and angle but not where it sits on screen, so a partly open hinge is placed across the middle of the window (`estimatedHinge`). On iOS 27.0, or an iPhone without a hinge, posture comes from gravity alone (flat / standing / face down).
 
+The laptop pose is the default: a Duo whose hinge state is unknown is treated as half-folded, and a night on a Duo is locked to landscape (`OrientationLock`). Only a clear fully-open or closed reading turns the split off.
+
 **Settings › Simulate half-fold** splits the screen at its midpoint, for simulators without a hinge. On the iPhone Duo simulator, change postures with Xcode's DeviceHub.
 
 ## Sounds and icon

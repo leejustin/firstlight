@@ -9,6 +9,7 @@ struct NightView: View {
     var onFinish: () -> Void
 
     @Environment(PowerMonitor.self) private var power
+    @Environment(PostureMonitor.self) private var posture: PostureMonitor?
     @Environment(\.scenePhase) private var scenePhase
     @State private var controlsVisible = false
     @State private var hideTask: Task<Void, Never>?
@@ -42,8 +43,15 @@ struct NightView: View {
         .immersive()
         .contentShape(Rectangle())
         .onTapGesture(perform: revealControls)
-        .onAppear { session.start() }
-        .onDisappear { session.end() }
+        .onAppear {
+            // On a Duo the night is always the sideways laptop pose.
+            if posture?.isFoldable == true { OrientationLock.landscape() }
+            session.start()
+        }
+        .onDisappear {
+            session.end()
+            OrientationLock.release()
+        }
         .onChange(of: scenePhase) { _, phase in
             switch phase {
             case .background: session.didEnterBackground()

@@ -45,7 +45,11 @@ struct HingeReadingTests {
 
     @Test func noReadingMeansNoHinge() {
         #expect(HingeState(reading: nil, windowSize: window) == .unavailable)
-        #expect(HingeState(reading: HingeReading(status: .unknown, angle: 0), windowSize: window) == .unavailable)
+    }
+
+    @Test func unknownStatusDefaultsToTheLaptopPose() {
+        let state = HingeState(reading: HingeReading(status: .unknown, angle: 0), windowSize: window)
+        #expect(state == .halfOpen(frame: CGRect(x: 0, y: 350, width: 800, height: 0)))
     }
 
     @Test func partlyOpenIsHalfOpenAcrossTheMiddle() {

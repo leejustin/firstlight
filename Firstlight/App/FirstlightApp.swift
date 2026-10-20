@@ -4,6 +4,7 @@ import SwiftUI
 
 @main
 struct FirstlightApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var model = AppModel()
 
     private let container: ModelContainer = {

@@ -75,7 +75,7 @@ Dawnfold is installable on every iPhone, but it presents itself as a Duo app. Th
 
 ## Screenshots
 
-Lead with the Duo set: the half-folded sunrise is the hero shot. Regular-iPhone screenshots come after it.
+Lead with the Duo set, sideways in the laptop pose: the half-folded sunrise is the hero shot. Regular-iPhone screenshots come after it. The Duo set is in `screenshots/duo-laptop/` (2034 × 1398, from the iPhone Duo simulator).
 
 From April 2027 iPhone Duo screenshots are required. `tools/screenshots.sh <simulator>` builds the app and captures the set into `screenshots/<simulator>/`, with the status bar at 9:41 and the in-app clocks set to match (9:41 PM at home, 6:43 AM mid-sunrise, 7:00 at wake):
 
