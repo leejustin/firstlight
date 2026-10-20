@@ -9,7 +9,7 @@ Open `Firstlight.xcodeproj` and run the **Firstlight** scheme. The scheme uses `
 
 - Target: iOS 27, iPhone only, Swift 6 with main-actor default isolation.
 - Build with Xcode 27.1 and the iOS 27.1 SDK; older SDKs show black borders on the Duo's inner screen. The deployment target stays iOS 27.0, and hinge support switches on at 27.1.
-- iCloud sync needs a development team. Set it under Signing, then make sure the container `iCloud.app.firstlight` exists. Without a team, settings stay on the device.
+- Signing needs a development team, with these registered: the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight` (shared with the widget) and the HomeKit capability. Without a team, settings stay on the device and the widget shows no alarm.
 
 ## Layout
 
@@ -20,10 +20,13 @@ Open `Firstlight.xcodeproj` and run the **Firstlight** scheme. The scheme uses `
 | `Firstlight/Night` | `NightSession` state machine (wind-down → night → sunrise → ringing/snooze → morning) and the full-screen night views |
 | `Firstlight/Home` | Home screen and the time, light and sound sheets |
 | `Firstlight/Setup` | Onboarding, animated placement guide, bedtime checklist |
-| `Firstlight/Services` | Screen brightness, power/heat/volume, sound engine, AlarmKit backup alarm |
+| `Firstlight/Services` | Screen brightness, power/heat/volume, sound engine, flashlight, AlarmKit backup alarm, HomeKit lamps |
 | `Firstlight/Store` | StoreKit 2 Pro unlock and paywall |
 | `Firstlight/Settings` | Settings and the **Light check** diagnostic |
-| `tools/` | Generators for the bundled sounds and the app icon |
+| `FirstlightWidgets` | Widget extension: the "Next sunrise" widget and the backup alarm's Live Activity (snooze countdown) |
+| `Shared` | Types compiled into both the app and the widget extension |
+| `site` | firstlight.app: product page, privacy policy, support (static HTML for GitHub Pages) |
+| `tools/` | Generators for the bundled sounds and the app icon, and `screenshots.sh` for the App Store set |
 
 ## Hinge detection
 
@@ -52,6 +55,12 @@ xcrun simctl launch booted app.firstlight -screen sunrise:0.4 -simulateFold YES 
 ```
 
 Screens: `onboarding`, `home`, `time`, `light`, `sound`, `windDown`, `settings`, `pro`, `bedtime`, `windDownNight`, `night`, `sunrise:<0…1>`, `ringing`, `snoozed`, `morning`, `test`.
+
+Add `-screenshots YES` to show the alarm as on without touching AlarmKit, and to set the in-app clocks to a believable night. `tools/screenshots.sh` does all of this; see [docs/AppStore.md](docs/AppStore.md).
+
+## Website
+
+`site/` is firstlight.app: a product page, the privacy policy and the support page that App Store Connect asks for. It's plain HTML and CSS with a `CNAME` for firstlight.app. To publish on GitHub Pages, copy [docs/pages-workflow.yml](docs/pages-workflow.yml) to `.github/workflows/site.yml` (pushing a workflow needs a token with the `workflow` scope), set Pages to "GitHub Actions" in the repo settings, and run the **Publish site** workflow. It never runs on its own. Then point firstlight.app's DNS at GitHub Pages. Any static host works too.
 
 ## The brightness question
 

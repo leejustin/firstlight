@@ -30,7 +30,7 @@ Pitch: a wake-up light alarm built for the Duo's half-fold. The phone stands on 
 - Flashlight boost (free, off by default): the rear flashlight fades in over the last few minutes, lighting the wall behind the phone. On a Duo, fold it with the camera half on top. Users can try it from settings.
 
 ## Later
-v1.1: wind-down sunset; HomeKit lights following the same sunrise (Pro). Later: sleep stats from Apple Health.
+Built ahead of plan: wind-down sunset and HomeKit lamps following the same sunrise (both Pro), a Lock Screen "Next sunrise" widget, and a Live Activity that gives the backup alarm a Snooze button. Later: sleep stats from Apple Health.
 
 ## Technical notes
 - The app stays open all night: it disables auto-lock while running and sets screen brightness itself.

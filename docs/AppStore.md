@@ -33,6 +33,7 @@ Firstlight Pro, one purchase with no subscription:
 • Steady and late-bloom brightness curves
 • Soft rain and wind chimes
 • A wind-down sunset that sinks to black as you fall asleep
+• HomeKit lamps that follow the sunrise, for far more light than a screen
 
 ## App Review notes
 
@@ -44,13 +45,18 @@ Firstlight Pro, one purchase with no subscription:
 >
 > The optional flashlight boost (Light › Flashlight boost, off by default) turns on the rear torch through `AVCaptureDevice` for the last few minutes before wake. The app never starts a capture session and never uses the camera.
 >
-> To see the whole sunrise quickly: Home › "Test sunrise · 60 s". Pro can be tested with the sandbox purchase on the Settings screen.
+> HomeKit (Pro, off by default) lists the user's lights so they can pick some, then sets their power, brightness and color during the sunrise while the app is open. It doesn't create scenes or automations.
+>
+> A widget extension draws the backup alarm's Live Activity, so the system alarm offers Snooze with a Lock Screen countdown, and provides a "Next sunrise" widget.
+>
+> To see the whole sunrise quickly: Home › "Try a 60-second sunrise". Pro can be tested with the sandbox purchase on the Settings screen.
 
 ## Privacy (App Privacy questionnaire)
 
 - **Data collection:** none. Select "Data Not Collected".
 - Alarm settings sync through the user's own iCloud private database (CloudKit). Apple hosts it, and the developer can't read it, so it doesn't count as collection.
 - No analytics, no ads, no tracking, no third-party SDKs.
+- HomeKit: the IDs of the lamps the user picks are stored with their alarm settings. Home data never leaves the device except through Apple's HomeKit.
 - `PrivacyInfo.xcprivacy` declares UserDefaults (reason CA92.1).
 
 ## Positioning
@@ -59,31 +65,30 @@ Firstlight is installable on every iPhone, but it presents itself as a Duo app. 
 
 - Lead every surface with the Duo: promotional text, the first lines of the description, and the first screenshots.
 - Keep "iPhone Duo" out of the app name, subtitle and icon. Apple's trademark guidelines allow "for iPhone"-style references in the description, but not Apple trademarks in the app name. Check the current wording before submitting.
-- On regular iPhones, onboarding says "Made for iPhone Duo · works with a stand".
+- On regular iPhones, onboarding says "Made for iPhone Duo".
 
 ## Screenshots
 
 Lead with the Duo set: the half-folded sunrise is the hero shot. Regular-iPhone screenshots come after it.
 
-From April 2027 iPhone Duo screenshots are required. Debug builds open any screen directly (see README › Debug launch arguments):
+From April 2027 iPhone Duo screenshots are required. `tools/screenshots.sh <simulator>` builds the app and captures the set into `screenshots/<simulator>/`, with the status bar at 9:41 and the in-app clocks set to match (9:41 PM at home, 6:43 AM mid-sunrise, 7:00 at wake):
 
-| # | Screen | Launch arguments |
-| --- | --- | --- |
-| 1 | Home | `-screen home` |
-| 2 | Sunrise in progress (Duo, half-folded) | `-screen sunrise:0.45 -simulateFold YES` |
-| 3 | Wake-up | `-screen ringing` |
-| 4 | Choose your sunrise | `-screen light -pro YES` |
-| 5 | Night clock | `-screen night` |
-| 6 | Bedtime checklist | `-screen bedtime` |
+1. Home
+2. Sunrise in progress
+3. Wake-up
+4. Choose your sunrise
+5. Night clock
+6. Duo only: sunrise on the half-folded Duo (fold the simulator in DeviceHub first)
 
-Take the Duo set on a real Duo (or a 27.1 Duo simulator) so the hinge is real, not simulated.
+Run it on a 6.9" simulator (an iPhone 18 Pro Max gives 1320 × 2868) and on the iPhone Duo simulator. The Duo set needs the iOS 27.1 simulator runtime.
 
 ## Before submitting
 
 - [ ] Build with Xcode 27.1 / iOS 27.1 SDK (avoids black borders on the Duo's inner screen)
-- [ ] Wire the 27.1 hinge traits into `FoldTraitBridge` (see README › Hinge detection)
 - [ ] Test in every posture in Device Hub, and on a regular iPhone
-- [ ] Set the development team, enable iCloud and register `iCloud.app.firstlight`
+- [ ] Set the development team, then register the app ID `app.firstlight`, the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight` and the HomeKit capability
+- [ ] Publish site/ (firstlight.app) and confirm support@firstlight.app receives mail; use its privacy and support pages for the App Store links
+- [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
 - [ ] Create the Pro in-app purchase in App Store Connect and test it in the sandbox
 - [ ] Run Light check on a real Duo for 30 minutes and record pillow lux
 - [ ] Confirm on device that the flashlight works without a camera permission prompt
