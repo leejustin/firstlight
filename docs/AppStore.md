@@ -30,7 +30,7 @@ Using another iPhone? Dawnfold works on any iPhone with iOS 27. Prop it on a sta
 
 Dawnfold Pro, one purchase with no subscription:
 • Ember, Coastal and Nordic sunrises, plus a custom finish from candle-warm to crisp daylight
-• Steady and late-bloom brightness curves
+• Steady and Late brightness curves
 • Soft rain and wind chimes
 • A wind-down sunset that sinks to black as you fall asleep
 • HomeKit lamps that follow the sunrise, for far more light than a screen
@@ -86,18 +86,28 @@ From April 2027 iPhone Duo screenshots are required. `tools/screenshots.sh <simu
 5. Night clock
 6. Duo only: sunrise on the half-folded Duo (fold the simulator in DeviceHub first)
 
-Run it on a 6.9" simulator (an iPhone 18 Pro Max gives 1320 × 2868) and on the iPhone Duo simulator. The Duo set needs the iOS 27.1 simulator runtime.
+App Store Connect's main iPhone slot ("iPhone with Dynamic Island, medium display") takes 1206 × 2622, which an iPhone 17 simulator produces; Apple scales it to the other iPhone sizes. A 6.9" simulator (iPhone 18 Pro Max, 1320 × 2868) covers the large-display slot if you want custom shots there. The iPhone Duo slot needs the Duo simulator, which needs the iOS 27.1 simulator runtime.
 
 ## Before submitting
 
-- [ ] Build with Xcode 27.1 / iOS 27.1 SDK (avoids black borders on the Duo's inner screen)
-- [ ] Test in every posture in Device Hub, and on a regular iPhone
-- [x] Create the App Store Connect record: Dawnfold: Sunrise Alarm, SKU dawnfold-ios
-- [x] Register the app IDs `app.dawnfold` and `app.dawnfold.widgets`, the iCloud container `iCloud.app.dawnfold`, the app group `group.app.dawnfold`, and HomeKit, iCloud, App Groups and Push for the app (`app.firstlight` and the Firstlight name belong to another developer, so the app is Dawnfold)
-- [x] Publish the support site: https://leejustin.github.io/firstlight/ (support email hello@leejustin.com)
+Done in App Store Connect (app ID 6825054414):
+- [x] App record: Dawnfold: Sunrise Alarm, `app.dawnfold`, SKU dawnfold-ios
+- [x] App information: subtitle, Lifestyle + Utilities, no third-party content, age rating 4+
+- [x] App Privacy: privacy policy URL, "Data Not Collected", published
+- [x] Price: free, available in all 175 countries or regions (EU needs the trader status below)
+- [x] Dawnfold Pro: non-consumable `app.dawnfold.pro`, $3.99, Family Sharing on, all regions, display name and description, review screenshot and notes
+- [x] Version 1.0: description, promotional text, keywords, support and marketing URLs, copyright, 5 screenshots, review notes, sign-in not required, manual release
+- [x] Developer site: app IDs `app.dawnfold` (HomeKit, iCloud, App Groups, Push, IAP) and `app.dawnfold.widgets`, container `iCloud.app.dawnfold`, group `group.app.dawnfold`
+- [x] Support site live at https://leejustin.github.io/firstlight/ (hello@leejustin.com)
+
+Still to do:
+- [ ] App Review contact: first and last name, phone number and email (Apple requires the phone number)
+- [ ] EU trader status (Business › Digital Services Act), or the app won't be offered in the EU
+- [ ] Sign in to Xcode (Settings › Accounts), then archive and upload a build; attach it and Dawnfold Pro to version 1.0
+- [ ] Test in every posture in Device Hub (needs the iOS 27.1 simulator runtime), and on a regular iPhone
+- [ ] Duo screenshots (required from April 2027)
 - [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
-- [ ] Create the Pro in-app purchase in App Store Connect and test it in the sandbox
+- [ ] Test the Pro purchase in the sandbox
 - [ ] Run Light check on a real Duo for 30 minutes and record pillow lux
 - [ ] Confirm on device that the flashlight works without a camera permission prompt
 - [ ] Let a real overnight run with the backup alarm finish (close the app, confirm the backup rings)
-- [ ] Privacy questionnaire, review notes, Duo and regular screenshots
