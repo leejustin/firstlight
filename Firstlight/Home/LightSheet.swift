@@ -281,7 +281,7 @@ struct TorchBoostSection: View {
 
     private var placementHint: String {
         if posture?.isFoldable == true {
-            return "The flashlight is on the back, so it shines on the wall behind the phone. Fold it with the camera half on top, near a light-colored wall."
+            return "The flashlight is on the back, so it shines on the wall behind the phone. Stand it with the camera half upright, near a light-colored wall."
         }
         return "The flashlight is on the back, so it shines on the wall behind the phone. Works best with a light-colored wall close behind the nightstand."
     }

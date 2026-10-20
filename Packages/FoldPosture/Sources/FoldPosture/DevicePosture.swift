@@ -121,7 +121,8 @@ public enum DevicePosture: Equatable, Sendable {
 }
 
 /// Where the hinge is, given that iOS doesn't say: a horizontal line across the middle of the window.
-/// In the tent pose the interface rotates so the hinge runs left to right.
+/// In the laptop pose (phone sideways, bottom half flat) the interface is landscape and the hinge
+/// runs left to right.
 public func estimatedHinge(in windowSize: CGSize) -> CGRect {
     CGRect(x: 0, y: windowSize.height / 2, width: windowSize.width, height: 0)
 }

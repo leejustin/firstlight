@@ -3,7 +3,7 @@ Dawnfold (working name Firstlight): a sunrise wake-up light alarm for iPhone Duo
 
 The App Store name is **Dawnfold: Sunrise Alarm**, bundle ID `app.dawnfold`. The Xcode project, targets and folders still use the working name Firstlight; users never see those.
 
-The phone stands half-folded on the nightstand with its top half aimed at your pillow, glows from deep red to daylight over 1–30 minutes, and wakes you with light before sound. See [SPEC.md](SPEC.md).
+The phone sits sideways on the nightstand, half-folded like a laptop, with its top half aimed at your pillow, glows from deep red to daylight over 1–30 minutes, and wakes you with light before sound. See [SPEC.md](SPEC.md).
 
 ## Build
 

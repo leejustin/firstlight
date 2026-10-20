@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// A looping side-view diagram: the phone folds into a tent on the nightstand, its top half
+/// A looping side-view diagram: the phone, sideways, folds like a laptop on the nightstand, its top half
 /// glows toward the pillow, and the distance is marked. `foldable: false` shows a regular iPhone
 /// on a stand instead.
 struct PlacementGuideView: View {
@@ -20,7 +20,7 @@ struct PlacementGuideView: View {
         }
         .accessibilityElement()
         .accessibilityLabel(foldable
-            ? "Fold the phone halfway like a tent, 40 to 60 centimeters from your head, top half facing the pillow, plugged in."
+            ? "Turn the phone sideways and fold it halfway like a laptop, 40 to 60 centimeters from your head, with the upright half facing the pillow and plugged in."
             : "Stand the phone up on a stand, 40 to 60 centimeters from your head, screen facing the pillow, plugged in.")
     }
 

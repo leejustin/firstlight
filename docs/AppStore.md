@@ -4,7 +4,7 @@
 
 **Name:** Dawnfold: Sunrise Alarm
 **Subtitle:** Wake to light before sound
-**Promotional text:** Made for iPhone Duo. Fold it like a tent and the sunrise aims itself at your pillow.
+**Promotional text:** Made for iPhone Duo. Fold it like a laptop and the sunrise aims itself at your pillow.
 **Category:** Lifestyle (secondary: Health & Fitness)
 **Price:** Free, with a $3.99 one-time Dawnfold Pro (`app.dawnfold.pro`, non-consumable, Family Sharing on)
 
@@ -14,7 +14,7 @@
 
 A sunrise alarm made for iPhone Duo.
 
-Fold your Duo halfway like a tent and set it on the nightstand. The top half aims the light straight at your pillow, and the bottom half lies flat with the snooze and stop buttons. You don't need a lamp or a stand.
+Turn your Duo sideways, fold it halfway like a laptop and set it on the nightstand. The top half aims the light straight at your pillow, and the bottom half lies flat with the snooze and stop buttons. You don't need a lamp or a stand.
 
 Dawnfold turns your iPhone into a sunrise. In the half hour before your alarm, the screen glows from deep red through amber to bright daylight, so light starts waking you before any sound does. Birdsong fades in over the last few minutes, and a soft marimba rings at wake time.
 

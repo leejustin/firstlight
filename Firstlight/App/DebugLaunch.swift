@@ -1,12 +1,12 @@
 #if DEBUG
-import Foundation
+import UIKit
 
 /// Debug builds can open straight to any screen, for screenshots and design review:
 ///
 ///   xcrun simctl launch <device> app.dawnfold -screen sunrise:0.4 -simulateFold YES
 ///
 /// Screens: onboarding, home, time, light, sound, windDown, settings, pro, bedtime, windDownNight,
-/// night, sunrise:<0…1>, ringing, snoozed, morning, test.
+/// night, sunrise:<0…1>, ringing, snoozed, morning, test. Add -landscape YES to turn the window sideways.
 enum DebugLaunch {
     static var screen: String? {
         UserDefaults.standard.string(forKey: "screen")
@@ -16,6 +16,15 @@ enum DebugLaunch {
     /// appears in the shot.
     static var isTakingScreenshots: Bool {
         UserDefaults.standard.bool(forKey: "screenshots")
+    }
+
+    /// Turns the window sideways, as a Duo sits in the laptop pose.
+    @MainActor
+    static func rotateIfRequested() {
+        guard UserDefaults.standard.bool(forKey: "landscape"),
+              let scene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first
+        else { return }
+        scene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
     }
 
     static var simulatesFold: Bool {

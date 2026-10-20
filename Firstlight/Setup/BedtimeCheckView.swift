@@ -58,7 +58,7 @@ struct BedtimeCheckView: View {
                     reminder("Leave Dawnfold open. Locking the phone stops the sunrise, though the backup alarm still rings.")
                     if settings.torchEnabled {
                         reminder(model.posture.isFoldable
-                            ? "Flashlight boost is on: camera half on top, facing a light wall"
+                            ? "Flashlight boost is on: camera half upright, near a light wall"
                             : "Flashlight boost is on: a light wall close behind the phone helps")
                     }
                     reminder("Night Shift and True Tone off for the night")
@@ -184,11 +184,11 @@ struct BedtimeCheckView: View {
         let foldable = model.posture.isFoldable
         switch model.posture.posture {
         case .halfFolded: return "Half-folded. Point the top half at your pillow."
-        case .standing: return foldable ? "Open flat. Fold it halfway so the top half faces you." : "Standing up, facing you"
-        case .flat: return foldable ? "Lying flat. Fold it halfway like a tent." : "Lying flat, so it lights the ceiling. Prop it on a stand."
+        case .standing: return foldable ? "Open flat. Fold it halfway like a laptop so the top half faces you." : "Standing up, facing you"
+        case .flat: return foldable ? "Lying flat. Turn it sideways and fold it halfway like a laptop." : "Lying flat, so it lights the ceiling. Prop it on a stand."
         case .faceDown: return "Face down. Turn the screen toward the pillow."
         case .closed: return "Closed. Open it halfway."
-        case .unknown: return foldable ? "Fold it halfway, top half toward the pillow." : "Prop it up so the screen faces your pillow."
+        case .unknown: return foldable ? "Turn it sideways and fold it like a laptop, top half toward the pillow." : "Prop it up so the screen faces your pillow."
         }
     }
 }

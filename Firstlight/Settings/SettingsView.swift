@@ -136,8 +136,8 @@ private struct PlacementPage: View {
                 PlacementGuideView(foldable: foldable)
                     .frame(height: 240)
                 Group {
-                    step("1", foldable ? "Fold it halfway, like a tent" : "Stand it up", foldable
-                        ? "The bottom half rests flat on the nightstand. The top half stands up."
+                    step("1", foldable ? "Set it up like a laptop" : "Stand it up", foldable
+                        ? "Turn it sideways and fold it halfway. The bottom half rests flat on the nightstand, and the top half stands up and lights up."
                         : "Use a stand or lean it against something so the screen faces you.")
                     step("2", "Aim at the pillow", "The light should land on your closed eyes, not the ceiling.")
                     step("3", "40–60 cm from your head", "Closer is brighter. Light falls off quickly with distance.")

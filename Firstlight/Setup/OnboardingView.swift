@@ -91,9 +91,9 @@ struct OnboardingView: View {
     private var placement: some View {
         page(
             eyebrow: model.posture.isFoldable ? nil : "Made for iPhone Duo",
-            title: model.posture.isFoldable ? "Fold it like a tent" : "Stand it up facing you",
+            title: model.posture.isFoldable ? "Set it up like a laptop" : "Stand it up facing you",
             body: model.posture.isFoldable
-                ? "Set it 40–60 cm from your head with the top half facing your pillow, and keep it plugged in."
+                ? "Turn it sideways and fold it halfway, like a little laptop on the nightstand. The top half faces your pillow from 40–60 cm away and lights up. Keep it plugged in."
                 : "Dawnfold is built around the Duo's fold, but a stand does the same job. Put it 40–60 cm from your head with the screen toward the pillow, and keep it plugged in. Lying flat, it only lights the ceiling."
         ) {
             PlacementGuideView(foldable: model.posture.isFoldable)
@@ -153,30 +153,53 @@ struct OnboardingView: View {
         }
     }
 
+    /// Stacked when the screen is tall; side by side when it's wide, as on a sideways Duo.
     private func page<Hero: View>(eyebrow: String?, title: String, body: String?, @ViewBuilder hero: () -> Hero) -> some View {
-        VStack(spacing: 28) {
-            Spacer(minLength: 20)
-            hero()
-            VStack(spacing: 14) {
-                if let eyebrow {
-                    Eyebrow(eyebrow, color: Palette.amber.opacity(0.85))
-                }
-                Text(title)
-                    .font(.display(34))
-                    .foregroundStyle(Palette.ink)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(2)
-                if let body {
-                    Text(body)
-                        .scaledFont(16, design: .rounded)
-                        .foregroundStyle(Palette.inkSecondary)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(3)
-                        .padding(.horizontal, 12)
+        let hero = hero()
+        return GeometryReader { geometry in
+            let isWide = geometry.size.width > geometry.size.height * 1.2
+            let text = pageText(eyebrow: eyebrow, title: title, body: body, centered: !isWide)
+            Group {
+                if isWide {
+                    HStack(spacing: 40) {
+                        hero.frame(maxWidth: .infinity)
+                        text.frame(maxWidth: 420, alignment: .leading)
+                    }
+                } else {
+                    VStack(spacing: 28) {
+                        Spacer(minLength: 20)
+                        hero
+                        text
+                        Spacer(minLength: 20)
+                    }
                 }
             }
-            Spacer(minLength: 20)
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
         .padding(.horizontal, 24)
+    }
+
+    private func pageText(eyebrow: String?, title: String, body: String?, centered: Bool) -> some View {
+        let alignment: TextAlignment = centered ? .center : .leading
+        return VStack(alignment: centered ? .center : .leading, spacing: 14) {
+            if let eyebrow {
+                Eyebrow(eyebrow, color: Palette.amber.opacity(0.85))
+            }
+            Text(title)
+                .font(.display(34))
+                .foregroundStyle(Palette.ink)
+                .multilineTextAlignment(alignment)
+                .lineSpacing(2)
+                .fixedSize(horizontal: false, vertical: true)
+            if let body {
+                Text(body)
+                    .scaledFont(16, design: .rounded)
+                    .foregroundStyle(Palette.inkSecondary)
+                    .multilineTextAlignment(alignment)
+                    .lineSpacing(3)
+                    .padding(.horizontal, centered ? 12 : 0)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
     }
 }

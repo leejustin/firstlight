@@ -2,7 +2,7 @@
 
 Working name Firstlight. Renamed to Dawnfold because another developer already uses the Firstlight name on the App Store.
 
-Pitch: a wake-up light alarm built for the Duo's half-fold. The phone stands on the nightstand with its top half aimed at your pillow, glows from deep red to bright white over 30 minutes, and wakes you with light before sound. Regular phones lie flat and light the ceiling; the Duo can aim at your face. Competitors: LightWake Alarm Clock and Light Alarm (regular iPhone screens) and HomeKit bulb apps. None aim the light or support the Duo.
+Pitch: a wake-up light alarm built for the Duo's half-fold. The phone sits sideways on the nightstand, folded like a laptop, with its top half aimed at your pillow, glows from deep red to bright white over 30 minutes, and wakes you with light before sound. Regular phones lie flat and light the ceiling; the Duo can aim at your face. Competitors: LightWake Alarm Clock and Light Alarm (regular iPhone screens) and HomeKit bulb apps. None aim the light or support the Duo.
 
 ## Platform rules (all apps)
 - Build with Xcode 27.1 and the iOS 27.1 SDK, or the app shows black borders on the inner screen.

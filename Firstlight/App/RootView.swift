@@ -79,6 +79,7 @@ struct RootView: View {
         guard let screen = DebugLaunch.screen else { return }
         hasCompletedOnboarding = screen != "onboarding"
         if DebugLaunch.simulatesFold { model.posture.simulatesHalfFold = true }
+        DebugLaunch.rotateIfRequested()
         if DebugLaunch.isTakingScreenshots { settings?.isArmed = true }
         DebugLaunch.setScreenshotClock(sunriseDuration: settings?.sunriseDuration ?? 1800)
         if screen == "bedtime" { showsBedtimeCheck = true }
