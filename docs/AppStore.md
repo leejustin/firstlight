@@ -104,7 +104,8 @@ Still to do:
 - EU: no trader declaration, so Dawnfold isn't offered in EU countries
 - [x] App Review contact
 - [x] Upload build 1.0 (1) with `tools/release.sh`
-- [ ] Attach the build and Dawnfold Pro to version 1.0, then submit for review
+- [x] Attach build 1 to version 1.0
+- [ ] Submit: Add for Review on Dawnfold Pro and on version 1.0 (the first purchase goes in with the app)
 - [ ] Test in every posture in Device Hub (needs the iOS 27.1 simulator runtime), and on a regular iPhone
 - [ ] Duo screenshots (required from April 2027)
 - [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
