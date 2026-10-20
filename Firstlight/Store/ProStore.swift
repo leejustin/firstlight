@@ -1,11 +1,11 @@
 import Observation
 import StoreKit
 
-/// Firstlight Pro: a single non-consumable unlock.
+/// Dawnfold Pro: a single non-consumable unlock.
 @MainActor
 @Observable
 final class ProStore {
-    static let productID = "app.firstlight.alarm.pro"
+    static let productID = "app.dawnfold.pro"
 
     enum PurchaseState: Equatable {
         case idle

@@ -349,7 +349,7 @@ struct HomeLampsSection: View {
         switch lights.access {
         case .denied:
             VStack(alignment: .leading, spacing: 8) {
-                Text("Firstlight doesn't have access to your Home.")
+                Text("Dawnfold doesn't have access to your Home.")
                     .scaledFont(14, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)
                 if let url = URL(string: UIApplication.openSettingsURLString) {

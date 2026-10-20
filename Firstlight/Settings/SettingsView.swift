@@ -71,7 +71,7 @@ struct SettingsView: View {
                 Section {
                     LabeledContent("Version", value: Bundle.main.versionString)
                 } footer: {
-                    Text("Firstlight keeps your alarm settings in iCloud. Nothing else leaves your phone.")
+                    Text("Dawnfold keeps your alarm settings in iCloud. Nothing else leaves your phone.")
                 }
             }
             .scrollContentBackground(.hidden)
@@ -100,7 +100,7 @@ struct SettingsView: View {
                 HorizonMark(style: .coastal)
                     .frame(width: 44, height: 44)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(model.isPro ? "Firstlight Pro" : "Unlock Firstlight Pro")
+                    Text(model.isPro ? "Dawnfold Pro" : "Unlock Dawnfold Pro")
                         .scaledFont(17, weight: .semibold, design: .rounded)
                         .foregroundStyle(Palette.ink)
                     Text(model.isPro ? "Pro is unlocked." : "More styles, sounds and wind-down for \(model.store.displayPrice)")
@@ -173,7 +173,7 @@ private struct BedtimeTipsPage: View {
             tip("Night Shift", "Turn it off for the night. It shifts the screen toward yellow, which mutes the daylight at the end of the sunrise.", "Control Center › long-press brightness")
             tip("True Tone", "Turn it off too. It matches the room's light, so in a dark bedroom it tints and dims the white.", "Control Center › long-press brightness")
             tip("Sleep Focus", "Turn it on so notifications don't light the screen overnight.", "Control Center › Focus")
-            tip("Auto-Lock", "Leave it as it is. Firstlight keeps the screen awake by itself while a night is running.", nil)
+            tip("Auto-Lock", "Leave it as it is. Dawnfold keeps the screen awake by itself while a night is running.", nil)
         }
         .scrollContentBackground(.hidden)
         .background(Palette.night)

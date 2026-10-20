@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.app.firstlight</string>
+		<string>iCloud.app.dawnfold</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
@@ -12,7 +12,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.app.firstlight.alarm</string>
+		<string>group.app.dawnfold</string>
 	</array>
 	<key>com.apple.developer.homekit</key>
 	<true/>

@@ -55,7 +55,7 @@ struct BedtimeCheckView: View {
 
                 VStack(alignment: .leading, spacing: 10) {
                     Eyebrow("Reminders")
-                    reminder("Leave Firstlight open. Locking the phone stops the sunrise, though the backup alarm still rings.")
+                    reminder("Leave Dawnfold open. Locking the phone stops the sunrise, though the backup alarm still rings.")
                     if settings.torchEnabled {
                         reminder(model.posture.isFoldable
                             ? "Flashlight boost is on: camera half on top, facing a light wall"
@@ -119,7 +119,7 @@ struct BedtimeCheckView: View {
                     .scaledFont(16, weight: .medium, design: .rounded)
                     .foregroundStyle(Palette.ink)
                 Text(authorized
-                    ? "Rings at \(TimeText.short(backupTime)) if Firstlight is closed"
+                    ? "Rings at \(TimeText.short(backupTime)) if Dawnfold is closed"
                     : "Not allowed. Without it, closing the app means no alarm.")
                     .scaledFont(13, design: .rounded)
                     .foregroundStyle(Palette.inkSecondary)

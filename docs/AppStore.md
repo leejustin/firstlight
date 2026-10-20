@@ -2,11 +2,11 @@
 
 ## Listing
 
-**Name:** Firstlight: Sunrise Alarm
+**Name:** Dawnfold: Sunrise Alarm
 **Subtitle:** Wake to light before sound
 **Promotional text:** Made for iPhone Duo. Fold it like a tent and the sunrise aims itself at your pillow.
 **Category:** Lifestyle (secondary: Health & Fitness)
-**Price:** Free, with a $3.99 one-time Firstlight Pro (`app.firstlight.alarm.pro`, non-consumable, Family Sharing on)
+**Price:** Free, with a $3.99 one-time Dawnfold Pro (`app.dawnfold.pro`, non-consumable, Family Sharing on)
 
 **Keywords:** sunrise,alarm,wake up light,dawn,light alarm,gentle alarm,sleep,morning,duo,fold
 
@@ -16,19 +16,19 @@ A sunrise alarm made for iPhone Duo.
 
 Fold your Duo halfway like a tent and set it on the nightstand. The top half aims the light straight at your pillow, and the bottom half lies flat with the snooze and stop buttons. You don't need a lamp or a stand.
 
-Firstlight turns your iPhone into a sunrise. In the half hour before your alarm, the screen glows from deep red through amber to bright daylight, so light starts waking you before any sound does. Birdsong fades in over the last few minutes, and a soft marimba rings at wake time.
+Dawnfold turns your iPhone into a sunrise. In the half hour before your alarm, the screen glows from deep red through amber to bright daylight, so light starts waking you before any sound does. Birdsong fades in over the last few minutes, and a soft marimba rings at wake time.
 
-Using another iPhone? Firstlight works on any iPhone with iOS 27. Prop it on a stand so the screen faces you.
+Using another iPhone? Dawnfold works on any iPhone with iOS 27. Prop it on a stand so the screen faces you.
 
 • A sunrise from 1 to 30 minutes, from about 1800 K to 6500 K
 • A night screen that's pure black, with a dim red clock that moves a little each minute to protect the display
-• A backup alarm that still rings if Firstlight was closed overnight
+• A backup alarm that still rings if Dawnfold was closed overnight
 • A 60-second test sunrise to check your placement
 • An optional flashlight boost for the last few minutes, bounced off the wall behind the phone
 • Snooze keeps the light on full
 • Bedtime checks for charging, position, Low Power Mode and volume
 
-Firstlight Pro, one purchase with no subscription:
+Dawnfold Pro, one purchase with no subscription:
 • Ember, Coastal and Nordic sunrises, plus a custom finish from candle-warm to crisp daylight
 • Steady and late-bloom brightness curves
 • Soft rain and wind chimes
@@ -37,7 +37,7 @@ Firstlight Pro, one purchase with no subscription:
 
 ## App Review notes
 
-> Firstlight is a sunrise alarm. While a night is running, the app stays open in the foreground: it disables auto-lock (`isIdleTimerDisabled`) and sets screen brightness itself, ramping it up over the sunrise. It restores the user's brightness when the night ends or the app leaves the foreground.
+> Dawnfold is a sunrise alarm. While a night is running, the app stays open in the foreground: it disables auto-lock (`isIdleTimerDisabled`) and sets screen brightness itself, ramping it up over the sunrise. It restores the user's brightness when the night ends or the app leaves the foreground.
 >
 > On iPhone Duo, when the phone is half-folded, the light is drawn only on the top half (above the hinge), which faces the pillow, and the controls are on the bottom half. On other iPhones the whole screen is used, and the setup guide asks people to use a stand.
 >
@@ -67,7 +67,7 @@ Firstlight Pro, one purchase with no subscription:
 
 ## Positioning
 
-Firstlight is installable on every iPhone, but it presents itself as a Duo app. There is no supported way to limit installs to the Duo (no device-capability key for the hinge), and Apple won't allow adding install restrictions in a later update. Regular iPhones are a supported "with a stand" mode.
+Dawnfold is installable on every iPhone, but it presents itself as a Duo app. There is no supported way to limit installs to the Duo (no device-capability key for the hinge), and Apple won't allow adding install restrictions in a later update. Regular iPhones are a supported "with a stand" mode.
 
 - Lead every surface with the Duo: promotional text, the first lines of the description, and the first screenshots.
 - Keep "iPhone Duo" out of the app name, subtitle and icon. Apple's trademark guidelines allow "for iPhone"-style references in the description, but not Apple trademarks in the app name. Check the current wording before submitting.
@@ -92,7 +92,8 @@ Run it on a 6.9" simulator (an iPhone 18 Pro Max gives 1320 × 2868) and on the 
 
 - [ ] Build with Xcode 27.1 / iOS 27.1 SDK (avoids black borders on the Duo's inner screen)
 - [ ] Test in every posture in Device Hub, and on a regular iPhone
-- [x] Register the app IDs `app.firstlight.alarm` and `app.firstlight.alarm.widgets`, the iCloud container `iCloud.app.firstlight`, the app group `group.app.firstlight.alarm`, and HomeKit, iCloud, App Groups and Push for the app (`app.firstlight` was taken by another developer)
+- [x] Create the App Store Connect record: Dawnfold: Sunrise Alarm, SKU dawnfold-ios
+- [x] Register the app IDs `app.dawnfold` and `app.dawnfold.widgets`, the iCloud container `iCloud.app.dawnfold`, the app group `group.app.dawnfold`, and HomeKit, iCloud, App Groups and Push for the app (`app.firstlight` and the Firstlight name belong to another developer, so the app is Dawnfold)
 - [x] Publish the support site: https://leejustin.github.io/firstlight/ (support email hello@leejustin.com)
 - [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
 - [ ] Create the Pro in-app purchase in App Store Connect and test it in the sandbox

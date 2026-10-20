@@ -117,13 +117,13 @@ struct Wordmark: View {
         HStack(spacing: 8) {
             HorizonMark(style: style)
                 .frame(width: 26, height: 26)
-            Text("firstlight")
+            Text("dawnfold")
                 .font(.display(22, weight: .regular))
                 .italic()
                 .foregroundStyle(Palette.ink)
         }
         .accessibilityElement()
-        .accessibilityLabel("Firstlight")
+        .accessibilityLabel("Dawnfold")
     }
 }
 

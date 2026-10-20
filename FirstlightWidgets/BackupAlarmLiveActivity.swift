@@ -53,7 +53,7 @@ private struct LockScreenAlarmView: View {
                 Text(AlarmTimeText.title(for: state))
                     .font(.headline)
                     .foregroundStyle(WidgetPalette.ink)
-                Text("Firstlight backup alarm")
+                Text("Dawnfold backup alarm")
                     .font(.caption)
                     .foregroundStyle(WidgetPalette.ink.opacity(0.6))
             }
@@ -74,7 +74,7 @@ private struct AlarmTimeText: View {
         case .alert: "Wake up"
         case .countdown: "Snoozing"
         case .paused: "Paused"
-        @unknown default: "Firstlight"
+        @unknown default: "Dawnfold"
         }
     }
 

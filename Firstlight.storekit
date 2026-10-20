@@ -21,12 +21,12 @@
       "localizations" : [
         {
           "description" : "Every sunrise style, custom curves, all sounds and the wind-down sunset.",
-          "displayName" : "Firstlight Pro",
+          "displayName" : "Dawnfold Pro",
           "locale" : "en_US"
         }
       ],
-      "productID" : "app.firstlight.alarm.pro",
-      "referenceName" : "Firstlight Pro",
+      "productID" : "app.dawnfold.pro",
+      "referenceName" : "Dawnfold Pro",
       "type" : "NonConsumable"
     }
   ],

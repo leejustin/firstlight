@@ -1,4 +1,6 @@
-# Firstlight — spec
+# Dawnfold — spec
+
+Working name Firstlight. Renamed to Dawnfold because another developer already uses the Firstlight name on the App Store.
 
 Pitch: a wake-up light alarm built for the Duo's half-fold. The phone stands on the nightstand with its top half aimed at your pillow, glows from deep red to bright white over 30 minutes, and wakes you with light before sound. Regular phones lie flat and light the ceiling; the Duo can aim at your face. Competitors: LightWake Alarm Clock and Light Alarm (regular iPhone screens) and HomeKit bulb apps. None aim the light or support the Duo.
 
@@ -8,7 +10,7 @@ Pitch: a wake-up light alarm built for the Duo's half-fold. The phone stands on 
 - Detect half-fold posture and the hinge with Apple's posture and trait APIs. Folding is a trait change, so the app keeps its state.
 - It must run well on regular iPhones too (with a stand).
 - From April 2027 every submission needs iPhone Duo screenshots.
-- Shared stack: Swift and SwiftUI, support iOS 27+, SwiftData plus iCloud, StoreKit 2, AlarmKit. One shared fold-posture helper is reused across all three apps (Carriage, Grid Fleet, Firstlight).
+- Shared stack: Swift and SwiftUI, support iOS 27+, SwiftData plus iCloud, StoreKit 2, AlarmKit. One shared fold-posture helper is reused across all three apps (Carriage, Grid Fleet, Dawnfold).
 
 ## How a night works
 1. Setup: pick a wake time and sunrise length. The app shows placement: half-folded, 40–60 cm from your head, top half facing the pillow, plugged in.

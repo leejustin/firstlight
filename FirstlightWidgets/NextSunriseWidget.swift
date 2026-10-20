@@ -73,7 +73,7 @@ struct NextSunriseView: View {
                     Text("Light from \(start.formatted(date: .omitted, time: .shortened))")
                         .font(.caption)
                 } else {
-                    Text("Firstlight")
+                    Text("Dawnfold")
                         .font(.headline)
                     Text("No alarm set")
                         .font(.caption)

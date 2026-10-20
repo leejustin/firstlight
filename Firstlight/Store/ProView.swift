@@ -23,7 +23,7 @@ struct ProView: View {
                 }
 
                 VStack(spacing: 10) {
-                    Text("Firstlight Pro")
+                    Text("Dawnfold Pro")
                         .font(.display(34))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Palette.ink)

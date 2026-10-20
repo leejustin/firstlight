@@ -337,14 +337,14 @@
 				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FirstlightWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
+				INFOPLIST_KEY_CFBundleDisplayName = Dawnfold;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.alarm.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = app.dawnfold.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -363,14 +363,14 @@
 				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FirstlightWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
+				INFOPLIST_KEY_CFBundleDisplayName = Dawnfold;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.alarm.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = app.dawnfold.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -457,7 +457,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Firstlight/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
+				INFOPLIST_KEY_CFBundleDisplayName = Dawnfold;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -468,7 +468,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.alarm;
+				PRODUCT_BUNDLE_IDENTIFIER = app.dawnfold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -490,7 +490,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Firstlight/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Firstlight;
+				INFOPLIST_KEY_CFBundleDisplayName = Dawnfold;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -501,7 +501,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.alarm;
+				PRODUCT_BUNDLE_IDENTIFIER = app.dawnfold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -520,7 +520,7 @@
 				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.alarm.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.dawnfold.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -539,7 +539,7 @@
 				DEVELOPMENT_TEAM = 2TWQYRZUDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.firstlight.alarm.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.dawnfold.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;

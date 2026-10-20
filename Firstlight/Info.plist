@@ -5,9 +5,9 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSHomeKitUsageDescription</key>
-	<string>Firstlight brightens the HomeKit lamps you pick along with the sunrise on your screen.</string>
+	<string>Dawnfold brightens the HomeKit lamps you pick along with the sunrise on your screen.</string>
 	<key>NSAlarmKitUsageDescription</key>
-	<string>Firstlight sets a backup alarm two minutes after your wake time, so you still wake up if the app was closed overnight.</string>
+	<string>Dawnfold sets a backup alarm two minutes after your wake time, so you still wake up if the app was closed overnight.</string>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UILaunchScreen</key>

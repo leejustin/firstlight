@@ -94,7 +94,7 @@ struct OnboardingView: View {
             title: model.posture.isFoldable ? "Fold it like a tent" : "Stand it up facing you",
             body: model.posture.isFoldable
                 ? "Set it 40–60 cm from your head with the top half facing your pillow, and keep it plugged in."
-                : "Firstlight is built around the Duo's fold, but a stand does the same job. Put it 40–60 cm from your head with the screen toward the pillow, and keep it plugged in. Lying flat, it only lights the ceiling."
+                : "Dawnfold is built around the Duo's fold, but a stand does the same job. Put it 40–60 cm from your head with the screen toward the pillow, and keep it plugged in. Lying flat, it only lights the ceiling."
         ) {
             PlacementGuideView(foldable: model.posture.isFoldable)
                 .frame(height: 220)
@@ -105,7 +105,7 @@ struct OnboardingView: View {
         page(
             eyebrow: nil,
             title: "There's a backup alarm",
-            body: "If Firstlight gets closed during the night, a normal alarm goes off two minutes after your wake time."
+            body: "If Dawnfold gets closed during the night, a normal alarm goes off two minutes after your wake time."
         ) {
             ZStack {
                 Circle()
