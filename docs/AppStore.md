@@ -6,7 +6,7 @@
 **Subtitle:** Wake to light before sound
 **Promotional text:** Made for iPhone Duo. Fold it like a tent and the sunrise aims itself at your pillow.
 **Category:** Lifestyle (secondary: Health & Fitness)
-**Price:** Free, with a $3.99 one-time Firstlight Pro (`com.leejustin.firstlight.pro`, non-consumable, Family Sharing on)
+**Price:** Free, with a $3.99 one-time Firstlight Pro (`app.firstlight.pro`, non-consumable, Family Sharing on)
 
 **Keywords:** sunrise,alarm,wake up light,dawn,light alarm,gentle alarm,sleep,morning,duo,fold
 
@@ -83,7 +83,7 @@ Take the Duo set on a real Duo (or a 27.1 Duo simulator) so the hinge is real, n
 - [ ] Build with Xcode 27.1 / iOS 27.1 SDK (avoids black borders on the Duo's inner screen)
 - [ ] Wire the 27.1 hinge traits into `FoldTraitBridge` (see README › Hinge detection)
 - [ ] Test in every posture in Device Hub, and on a regular iPhone
-- [ ] Set the development team, enable iCloud and register `iCloud.com.leejustin.firstlight`
+- [ ] Set the development team, enable iCloud and register `iCloud.app.firstlight`
 - [ ] Create the Pro in-app purchase in App Store Connect and test it in the sandbox
 - [ ] Run Light check on a real Duo for 30 minutes and record pillow lux
 - [ ] Confirm on device that the flashlight works without a camera permission prompt

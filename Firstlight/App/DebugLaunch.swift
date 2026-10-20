@@ -3,7 +3,7 @@ import Foundation
 
 /// Debug builds can open straight to any screen, for screenshots and design review:
 ///
-///   xcrun simctl launch <device> com.leejustin.firstlight -screen sunrise:0.4 -simulateFold YES
+///   xcrun simctl launch <device> app.firstlight -screen sunrise:0.4 -simulateFold YES
 ///
 /// Screens: onboarding, home, time, light, sound, windDown, settings, pro, bedtime, windDownNight,
 /// night, sunrise:<0…1>, ringing, snoozed, morning, test.

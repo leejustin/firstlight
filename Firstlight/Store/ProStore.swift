@@ -5,7 +5,7 @@ import StoreKit
 @MainActor
 @Observable
 final class ProStore {
-    static let productID = "com.leejustin.firstlight.pro"
+    static let productID = "app.firstlight.pro"
 
     enum PurchaseState: Equatable {
         case idle
