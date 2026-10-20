@@ -46,6 +46,8 @@ struct SettingsView: View {
                         label("Simulate half-fold", "rectangle.split.1x2")
                     }
                     .tint(Palette.ember)
+                    LabeledContent("Hinge", value: hingeDescription)
+                    LabeledContent("Posture", value: postureDescription)
                 } header: {
                     Text("Diagnostics")
                 } footer: {
@@ -89,6 +91,29 @@ struct SettingsView: View {
         .nightSheetStyle()
         .onChange(of: simulatesHalfFold, initial: true) { _, value in
             model.posture.simulatesHalfFold = value
+        }
+    }
+
+    /// What the hinge sensor says right now, for checking postures on a Duo or in DeviceHub.
+    private var hingeDescription: String {
+        guard let reading = model.posture.hingeReading else { return "None (not a foldable)" }
+        let status = switch reading.status {
+        case .closed: "Closed"
+        case .partiallyOpen: "Partly open"
+        case .fullyOpen: "Fully open"
+        case .unknown: "Unknown"
+        }
+        return "\(status), \(Int((reading.angle * 180 / .pi).rounded()))°"
+    }
+
+    private var postureDescription: String {
+        switch model.posture.posture {
+        case .halfFolded: "Half-folded (light on top)"
+        case .standing: "Standing"
+        case .flat: "Flat"
+        case .faceDown: "Face down"
+        case .closed: "Closed"
+        case .unknown: "Unknown"
         }
     }
 

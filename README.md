@@ -48,6 +48,16 @@ tools/make_sounds.sh
 swift tools/make_icon.swift Firstlight/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png
 ```
 
+## Releasing
+
+`tools/release.sh` archives a Release build and uploads it to App Store Connect, signing with an App Store Connect API key. The key needs the Admin role, since an App Manager key can't use the cloud-managed distribution certificate:
+
+```bash
+ASC_KEY_ID=W894N9K5K7 ASC_ISSUER_ID=e551768f-7ab8-4e01-843a-12836cbc94e5 tools/release.sh 2
+```
+
+The key file is read from `~/.appstoreconnect/private_keys/AuthKey_<ASC_KEY_ID>.p8`. The argument is the build number; it defaults to a timestamp.
+
 ## Debug launch arguments
 
 Debug builds can open straight to any screen, which is handy for design review and App Store screenshots:

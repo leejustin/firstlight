@@ -101,9 +101,10 @@ Done in App Store Connect (app ID 6825054414):
 - [x] Support site live at https://leejustin.github.io/firstlight/ (hello@leejustin.com)
 
 Still to do:
-- [ ] App Review contact: first and last name, phone number and email (Apple requires the phone number)
-- [ ] EU trader status (Business › Digital Services Act), or the app won't be offered in the EU
-- [ ] Sign in to Xcode (Settings › Accounts), then archive and upload a build; attach it and Dawnfold Pro to version 1.0
+- EU: no trader declaration, so Dawnfold isn't offered in EU countries
+- [x] App Review contact
+- [x] Upload build 1.0 (1) with `tools/release.sh`
+- [ ] Attach the build and Dawnfold Pro to version 1.0, then submit for review
 - [ ] Test in every posture in Device Hub (needs the iOS 27.1 simulator runtime), and on a regular iPhone
 - [ ] Duo screenshots (required from April 2027)
 - [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
