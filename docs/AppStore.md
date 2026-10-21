@@ -103,9 +103,9 @@ Done in App Store Connect (app ID 6825054414):
 Still to do:
 - EU: no trader declaration, so Dawnfold isn't offered in EU countries
 - [x] App Review contact
-- [x] Upload build 1.0 (1) with `tools/release.sh`
-- [x] Attach build 1 to version 1.0
-- [ ] Submit: Add for Review on Dawnfold Pro and on version 1.0 (the first purchase goes in with the app)
+- [x] Upload builds 1 and 2 with `tools/release.sh`
+- [x] Attach build 2 (sideways laptop default) to version 1.0
+- [x] Submitted version 1.0 and Dawnfold Pro for review on October 20, 2026 (manual release once approved)
 - [ ] Test in every posture in Device Hub (needs the iOS 27.1 simulator runtime), and on a regular iPhone
 - [ ] Duo screenshots (required from April 2027)
 - [ ] Try HomeKit lamps with a real color lamp and a white-only lamp
